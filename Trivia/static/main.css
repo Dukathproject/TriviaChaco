@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@600;900&display=swap');
+*{
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+     
+   }
+body{
+    background: #2D2B1F;
+    background: -moz-linear-gradient(-45deg, #2D2B1F 0%, #000000 100%);
+    background: -webkit-linear-gradient(-45deg, #2D2B1F 0%, #000000 100%);
+    background: linear-gradient(135deg, #2D2B1F 0%, #000000 100%);
+}
+a{
+    text-decoration: none;
+}
+
+.padre{
+    display: flex;
+    flex-flow: column nowrap;
+}    
+    .header {
+        display: flex;
+        flex-flow: column nowrap;
+        margin-bottom: 10px;
+    }
+        .menu{
+            background: rgb(0, 0, 0, .1);
+            display: flex;
+            flex-flow: row nowrap;
+            height: 50%;
+            width: 50;
+            align-items: center;
+            font-family: 'Spartan', sans-serif;
+            border-bottom: 1px solid rgba(255, 255, 255, .5);
+            
+        }
+            .logo{
+                height: 100%;
+                flex:1 1 auto;
+                
+            }
+                .logo img{
+                    width: 30%;
+                }
+                                              
+            .nav {
+                flex:4 1 auto;
+            }
+                .nav a{
+                    color: #f9dc5c;
+                    font-size: 11px;
+                    text-transform: uppercase;
+                    padding: 0 10px;
+                    letter-spacing: 2px;
+                }
+                .nav a:hover{
+                    color: #fff;
+                }
+            .social {
+                flex:1 1 auto;
+            }
+                .social a{
+                    font-size: 30px;
+                    color: #f9dc5c;
+                    padding: 0 5px;
+                }
+                .social a:hover{
+                    color: #fff;
+                }
+    .principal {
+        background: url('./media/fondoaltavoz.png');          
+        background-color: #f9dc5c;
+        display: flex;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 50px;
+        border: 1px #2D2B1F;
+        border-radius: 5px;
+        justify-content: center;
+        
+    }
+        .logogrande{
+            flex:1 1 50%;
+            margin: auto;
+        }
+            .logogrande img{
+                width: 80%;
+                
+            }
+        .Bienvenida{
+            text-align: center;
+            font-family: 'Spartan', sans-serif;
+            color: #fff;
+            width: 50%;
+            background: rgba(241, 199, 17, .2);
+            border-radius: 10px;
+            }
+            .Bienvenida h1{
+                font-size: 50px;
+                margin-bottom: 50px;
+                text-shadow: 3px 5px 2px #333333;
+            }
+            .boton{
+                background: #333333;
+                display: flex;
+                flex: row;
+                justify-content: center;
+                color: #fff;
+                text-transform: uppercase;
+                text-shadow: 1px 2px 2px #333333;
+                border-radius: 10px;
+                width: 50%;
+            }
+            .boton:hover{
+                background: #fff;
+                color: #f1c711;
+            }
+            .Bienvenida p{
+                margin-top: 20px;
+                color: #2D2B1F;
+                font-size: 20px;
+            }
+        .tituloequipo{
+            color: #fff;
+            text-align: center;
+            font-family: 'Spartan';
+            text-shadow: 1px 2px 2px #333333;
+            font-size: large;
+
+        }
+        .equipo{
+            display: flex;
+        }    
+            .contenedor{
+                background: rgb(255, 255, 255, .7);
+                border-radius: 5px;
+                border: #f9dc5c 1px solid;
+                font-family: 'Roboto', sans-serif;
+                justify-content: center;
+                flex-direction: row;
+                
+            }
+                div.avatar {
+                            height: 100px;
+                            width: 100px;
+                            background-repeat: no-repeat;
+                            background-position: 100%;
+                            border-radius: 50%;
+                            background-size: 200% auto;
+                        }
+        .formulario{
+            background-color: rgba(255, 255, 255, .8);
+            width: 100%;
+            align-items: center;
+            font-family: 'Spartan';
+            border-radius: 15px;
+        }
+            .signup{
+                border-radius: 10px;
+                border: #929292 solid 1px;
+                color: #f9dc5c;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                text-shadow: 1px 2px 2px #333333;
+                margin: auto;
+                margin-bottom: 10px;
+                } 
+                .signup h2{
+                    font-size: 30px;
+                }
+                .form-holder{
+                    margin-bottom: 10px;
+                            }
+                .input{
+                    background: #ffffe4;
+                    width: 80%;
+                    margin: 5px;
+                    border-radius: 5px;
+                    border: 1px solid #f9dc5c;
+                }
+                    .textsalto{
+                        font-size: 20px;
+                        text-align: center;
+                        color: #f1c711;
+                        text-shadow: 1px 2px 2px #333333;
+                    }
+                        .textsalto img{
+                            width: 20%;
+                        }
+        .botonera{
+            display: flex;
+            justify-content: center;
+        }
+                               
+                    
+    .footer{
+        background-color: #f9dc5c;
+        display: flex;
+        font-family: 'Spartan', sans-serif;
+        width: 100%;
+        border-radius: 10px;
+        justify-content: center;
+    }
+        .pie{
+            
+            width: 300px;
+            
+        }
+            .pie a{
+                text-decoration: none;
+                color: #fff;
+                text-shadow: 1px 2px 2px #333333;
+            }
+
+
+@media all and (max-width: 800px){
+    .principal{
+        flex-direction: column;
+    }
+    .menu {
+        flex-direction: column;
+        height: 50%;
+    }
+}
+@media all and (max-width: 600px){
+    .Bienvenida{
+        flex-direction: column;
+        justify-content: center;
+        font-size: small;
+        text-align: center;
+    }
+}
