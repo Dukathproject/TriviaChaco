@@ -35,6 +35,7 @@
                     <div class="signup">
                         <h2 class="form-title" id="signup">REGISTRATE!</h2>
                         <div class="form-holder">
+                            {% csrf_token %}
                             <input type="text" class="input" placeholder="Nombre" /><br>
                             <input type="email" class="input" placeholder="Email" /><br>
                             <input type="password" class="input" placeholder="Password" /><br>
@@ -43,7 +44,7 @@
                             <a href='#' class="boton">Registrarse</a>
                         </div>    
                     </div>
-                    <div class="textsalto">
+                    <!-- <div class="textsalto">
                         <img src="{% static 'media/chacotrivialogo.png'%}">
                         <p> O si ya te registraste...</p></div>
                     <div class="signup">
@@ -57,7 +58,7 @@
                                 <a href='#' class="boton">INGRESA</a>
                             </div>    
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
