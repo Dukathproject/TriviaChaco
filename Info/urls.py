@@ -21,5 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', v.index, name='index'),
     path('login/', v.login, name='login'),
-    path('register/', v.register, name='register')
+    path('register/', v.register, name='register'),
+    #---------------------------------------------
+    #posts de formularios
+    #registro
 ]

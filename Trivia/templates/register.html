@@ -35,30 +35,17 @@
                     <div class="signup">
                         <h2 class="form-title" id="signup">REGISTRATE!</h2>
                         <div class="form-holder">
-                            {% csrf_token %}
-                            <input type="text" class="input" placeholder="Nombre" /><br>
-                            <input type="email" class="input" placeholder="Email" /><br>
-                            <input type="password" class="input" placeholder="Password" /><br>
+                            <!-- FORMULARIO REGISTRO -->
+                            <form action="/register/" method="post">
+                                {% csrf_token %}
+                                {{ form }}
+                                <div class="botonera">
+                                    <input class="boton" type="submit" value="Registrarse">
+                                </div>
+                            </form>
+                            <!--  -->
                         </div>
-                        <div class="botonera">
-                            <a href='#' class="boton">Registrarse</a>
-                        </div>    
                     </div>
-                    <!-- <div class="textsalto">
-                        <img src="{% static 'media/chacotrivialogo.png'%}">
-                        <p> O si ya te registraste...</p></div>
-                    <div class="signup">
-                        <div class="center">
-                            <h2 class="form-title" id="login">Ingresar</h2>
-                            <div class="form-holder">
-                                <input type="email" class="input" placeholder="Email" />
-                                <input type="password" class="input" placeholder="Password" />
-                            </div>
-                            <div class="botonera">
-                                <a href='#' class="boton">INGRESA</a>
-                            </div>    
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
