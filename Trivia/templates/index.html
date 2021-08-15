@@ -9,18 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'main.css'%}">
     <script src="https://kit.fontawesome.com/592e3a62fc.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;700&display=swap" rel="stylesheet">
+
     <title>Chaco Trivia!</title>
 </head>
 <body>
+    <div class="backgroundimage"></div>
+
     <div class="padre">
         <header class="header">
             <div class="menu">
                 <div class="logo">
-                    <a href="{% url 'index' %}"><img src="{% static 'media/Altavoz.png'%}"></a>                 
+                    <a href="{% url 'index' %}"><img src="{% static 'media/ChacoTrivia.png'%}"></a>                 
                 </div>
                 <nav class="nav">
                     <a href="{% url 'index' %}"><i class="fas fa-home"></i>Inicio</a>
-                    <a href="#"><i class="fas fa-users"></i>Nosotros</a>
+                    <a href="{% url 'us' %}"><i class="fas fa-users"></i>Nosotros</a>
                     <a href="#"><i class="fas fa-gamepad"></i>El Juego</a>
                     <a href="#"><i class="fas fa-chart-bar"></i>Estadisticas</a>
                     <a href="#"><i class="fas fa-envelope"></i>Contacto</a>
@@ -44,6 +51,7 @@
                 </div>
                 <div><p> Divertite a lo grande!</p></div>
             </div>    
+            
         </div>
         <footer class="footer">
             <nav class="pie">
@@ -51,6 +59,5 @@
             </nav>
         </footer>
     </div>
-    
 </body>
 </html>

@@ -61,5 +61,8 @@ def register(request):
 def login(request):
     return render(request, "login.html")
 
+def us(request):
+    return render(request, "us.html")
+
 #-------------------------------------------------
 # POSTS de formularios

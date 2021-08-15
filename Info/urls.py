@@ -22,6 +22,8 @@ urlpatterns = [
     path('', v.index, name='index'),
     path('login/', v.login, name='login'),
     path('register/', v.register, name='register'),
+    path('us/', v.us, name='us')
+    
     #---------------------------------------------
     #posts de formularios
     #registro

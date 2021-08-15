@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@600;900&display=swap');
+html{
+    padding: 0;
+}
+
 *{
     margin: 0px;
     padding: 10px;
@@ -8,6 +9,7 @@
      
    }
 body{
+    padding: 0;
     background: #2D2B1F;
     background: -moz-linear-gradient(-45deg, #2D2B1F 0%, #000000 100%);
     background: -webkit-linear-gradient(-45deg, #2D2B1F 0%, #000000 100%);
@@ -18,6 +20,7 @@ a{
 }
 
 .padre{
+    padding: 0;
     display: flex;
     flex-flow: column nowrap;
 }    
@@ -25,16 +28,19 @@ a{
         display: flex;
         flex-flow: column nowrap;
         margin-bottom: 10px;
+        padding: 0;
+        z-index: 150;
     }
         .menu{
-            background: rgb(0, 0, 0, .1);
+            background: rgb(0, 0, 0, 1);
             display: flex;
             flex-flow: row nowrap;
             height: 50%;
             width: 50;
             align-items: center;
-            font-family: 'Spartan', sans-serif;
+            font-family: 'Rubik', sans-serif;
             border-bottom: 1px solid rgba(255, 255, 255, .5);
+            padding: 0;
             
         }
             .logo{
@@ -43,7 +49,7 @@ a{
                 
             }
                 .logo img{
-                    width: 30%;
+                    width: 20%;
                 }
                                               
             .nav {
@@ -70,38 +76,62 @@ a{
                 .social a:hover{
                     color: #fff;
                 }
-    .principal {
-        background: url('./media/fondoaltavoz.png');          
-        background-color: #f9dc5c;
+    .backgroundimage{
+        animation: rotate 300s linear infinite;
+        background: url('./media/fondoaltavoz.png') no-repeat center;
+        position: fixed;
+        display: block;
+        height: 500vh;
+        width: 500vh;
+        z-index: 0;
+        top: -200%;
+        left: -95%;
+    }            
+    .principal { 
+        background-color: #f9dc5c00;
         display: flex;
         width: 90%;
+        height: 80%;
         margin: auto;
-        margin-bottom: 50px;
+        margin-bottom: 0;
         border: 1px #2D2B1F;
         border-radius: 5px;
         justify-content: center;
+        z-index: 100;
+        overflow: hidden;
         
     }
+    @keyframes rotate {
+        to{ transform: rotate(360deg); }
+      }
+
         .logogrande{
             flex:1 1 50%;
             margin: auto;
+            z-index: 100;
         }
             .logogrande img{
-                width: 80%;
-                
+                width: 100%;                
             }
         .Bienvenida{
+            background: url('./media/fondocontenedor.png');
             text-align: center;
-            font-family: 'Spartan', sans-serif;
-            color: #fff;
-            width: 50%;
-            background: rgba(241, 199, 17, .2);
+            font-family: 'Rubik', sans-serif;
+            box-shadow: 5px 5px 0px 5px #000000;
+            color: #f1c711;
+            width: 30%;
+            margin-right: 200px;
+            margin-top: 50px;
+            margin-bottom: 50px;
             border-radius: 10px;
+            z-index: 100;
             }
             .Bienvenida h1{
                 font-size: 50px;
+                margin-top: 50px;
                 margin-bottom: 50px;
-                text-shadow: 3px 5px 2px #333333;
+                text-shadow: 5px 5px 0px 5px #000000;
+                
             }
             .boton{
                 background: #333333;
@@ -110,13 +140,14 @@ a{
                 justify-content: center;
                 color: #fff;
                 text-transform: uppercase;
-                text-shadow: 1px 2px 2px #333333;
+                
                 border-radius: 10px;
                 width: 50%;
             }
             .boton:hover{
-                background: #fff;
-                color: #f1c711;
+                font-weight: 700;
+                background: #f1c711;
+                color: #fff;
             }
             .Bienvenida p{
                 margin-top: 20px;
@@ -126,7 +157,7 @@ a{
         .tituloequipo{
             color: #fff;
             text-align: center;
-            font-family: 'Spartan';
+            font-family: 'Rubik', sans-serif;
             text-shadow: 1px 2px 2px #333333;
             font-size: large;
 
@@ -152,21 +183,22 @@ a{
                             background-size: 200% auto;
                         }
         .formulario{
-            background-color: rgba(255, 255, 255, .8);
+            background: url('./media/fondocontenedor.png');
+            background-color: rgba(255, 255, 255);
             width: 100%;
             align-items: center;
-            font-family: 'Spartan';
+            font-family: 'Rubik', sans-serif;
             border-radius: 15px;
         }
             .signup{
                 border-radius: 10px;
                 border: #929292 solid 1px;
-                color: #f9dc5c;
+                color: #f1c711;
                 display: flex;
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
-                text-shadow: 1px 2px 2px #333333;
+                /* text-shadow: 1px 2px 2px #333333; */
                 margin: auto;
                 margin-bottom: 10px;
                 } 
@@ -187,7 +219,7 @@ a{
                         font-size: 20px;
                         text-align: center;
                         color: #f1c711;
-                        text-shadow: 1px 2px 2px #333333;
+                        /* text-shadow: 1px 2px 2px #333333; */
                     }
                         .textsalto img{
                             width: 20%;
@@ -199,12 +231,13 @@ a{
                                
                     
     .footer{
-        background-color: #f9dc5c;
+        background-color: #000;
         display: flex;
-        font-family: 'Spartan', sans-serif;
+        font-family: 'Rubik', sans-serif;
         width: 100%;
         border-radius: 10px;
         justify-content: center;
+        z-index: 140;
     }
         .pie{
             
@@ -214,7 +247,6 @@ a{
             .pie a{
                 text-decoration: none;
                 color: #fff;
-                text-shadow: 1px 2px 2px #333333;
             }
 
 
