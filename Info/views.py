@@ -2,8 +2,9 @@
 # from django.template import Template, Context
 from django.shortcuts import render, redirect
 from MySQLdb import _mysql
-from Trivia.forms import RegisterForm
-from .db import register_post
+from Trivia.forms import RegisterForm, LoginForm
+from .db import register_post, user_login
+
 
 
 def index(request):
@@ -21,10 +22,12 @@ def register(request):
 
 
 def login(request):
+    if request.method == 'POST':
+        user_login(request)
+    form = LoginForm()
     return render(request, "login.html")
 
 def us(request):
     return render(request, "us.html")
 
-#-------------------------------------------------
-# POSTS de formularios
+# 
