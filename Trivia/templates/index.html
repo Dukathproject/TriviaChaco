@@ -26,6 +26,10 @@
                     <a href="{% url 'index' %}"><img src="{% static 'media/ChacoTrivia.png'%}"></a>                 
                 </div>
                 <nav class="nav">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-users"></i>{{ user.username }}:Salir
+                    </a>       
+                    {% endif %}
                     <a href="{% url 'index' %}"><i class="fas fa-home"></i>Inicio</a>
                     <a href="{% url 'us' %}"><i class="fas fa-users"></i>Nosotros</a>
                     <a href="#"><i class="fas fa-gamepad"></i>El Juego</a>

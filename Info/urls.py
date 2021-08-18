@@ -21,8 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', v.index, name='index'),
     path('login/', v.login, name='login'),
+    path('logout/', v.user_logout, name='logout'),
     path('register/', v.register, name='register'),
-    path('us/', v.us, name='us')
+    path('us/', v.us, name='us'),
+    path('game/', v.game, name='game')
     
     #---------------------------------------------
     #posts de formularios
