@@ -1,5 +1,5 @@
 {% load static %}
-
+{% if user.is_authenticated %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,21 +21,21 @@
         <header class="header">
             <div class="menu">
                 <div class="logo">
-                    <a href="{% url 'index' %}"><img src="{% static 'media/ChacoTrivia.png'%}"></a>                 
+                    <a href="{% url 'lobby' %}"><img src="{% static 'media/ChacoTrivia.png'%}"></a>                 
                 </div>
-                <nav class="nav">
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}"><i class="fas fa-users"></i>{{ user.username }}:Salir
-                    </a>       
-                    {% endif %}
-                    <a href="{% url 'index' %}"><i class="fas fa-home"></i>Inicio</a>
+                <nav class="nav">              
+                    <a href="{% url 'lobby' %}"><i class="fas fa-home"></i>Inicio</a>
                     <a href="#"><i class="fas fa-users"></i>Nosotros</a>
                     <a href="#"><i class="fas fa-gamepad"></i>El Juego</a>
                     <a href="#"><i class="fas fa-chart-bar"></i>Estadisticas</a>
                     <a href="#"><i class="fas fa-envelope"></i>Contacto</a>
                 </nav>
                 <div class="social">
-                    <div><a href="#"><i class="fab fa-instagram"></i></a></div>
+                    <div>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}"><i class="fas fa-users"></i>{{ user.username }}:Salir</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </header>
@@ -75,3 +75,4 @@
     
 </body>
 </html>
+{% endif %}

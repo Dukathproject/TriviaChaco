@@ -31,9 +31,8 @@ def questions():
                     'formula': respuesta['formula'],
                     'correcta': respuesta['correcta']
                 }
+        print(questions_list)
     return questions_list
-
-
 
 
 #funcion para consultar si existe usuario en db, si no existe lo agrega
@@ -43,7 +42,16 @@ def register_post(request):
     # check whether it's valid:
     if form.is_valid():
         form_data = form.cleaned_data
-        user = User.objects.create_user(form_data['name'], form_data['email'], form_data['password'])
+        try:
+            check = User.objects.get(username=form_data['name'])
+        except:
+            user = User.objects.create_user(form_data['name'], form_data['email'], form_data['password'])
+            msg = [True, "Usuario creado de forma exitosa!"]
+            return msg
+        msg = [False, "Usuario ya existente, ingrese otro nombre de usuario."]
+        return msg
+            
+            
  
  
 def user_login(request):
@@ -56,22 +64,3 @@ def user_login(request):
             # A backend authenticated the credentials
         # else:
             # No backend authenticated the credentials
-    
-    
-
-        # process the data in form.cleaned_data as required
-        # form_data = form.cleaned_data
-        # #revisar en db si ya existe usuario
-        # query_str = f"""SELECT name FROM informatorio.trivia_user
-        #             WHERE name = '{form_data['name']}';""" 
-        # db.query(query_str)
-        # r=db.store_result()
-        # query_result = r.fetch_row(maxrows=1)
-        # if query_result:
-        #     print("usuario ya existente")
-        #     #redireccionar
-        # else:
-        #     #si no existe usuario, se crea
-        #     print("usuario creado")
-        #     query_str = f"""INSERT INTO `informatorio`.`trivia_user` #(`name`, `email`, `password`) VALUES ('{form_data['name']}', '{form_data['email']}','{form_data['password']}');"""
-        #     db.query(query_str)

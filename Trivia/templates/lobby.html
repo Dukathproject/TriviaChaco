@@ -1,6 +1,6 @@
 {% load static %}
 
-
+{% if user.is_authenticated %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,7 +23,7 @@
         <header class="header">
             <div class="menu">
                 <div class="logo">
-                    <a href="{% url 'index' %}"><img src="{% static 'media/ChacoTrivia.png'%}"></a>                 
+                    <a href="#"><img src="{% static 'media/ChacoTrivia.png'%}"></a>                 
                 </div>
                 <nav class="nav">
                     <a href="{% url 'us' %}"><i class="fas fa-users"></i>Nosotros</a>
@@ -33,9 +33,7 @@
                 </nav>
                 <div class="social">
                     <div>
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'logout' %}"><i class="fas fa-users"></i>{{ user.username }}:Salir</a>
-                        {% endif %}
+                        <a href="{% url 'logout' %}"><i class="fas fa-users"></i>{{ user.username }}:Salir</a>
                     </div>
                 </div>
             </div>
@@ -46,12 +44,8 @@
             </div>
             <div class="Bienvenida">
                 <h1>Bienvenidos a ChacoTrivia!</h1>
-                <p>{{ msg }}</p>
                 <div class="botonera">
-                    <a href="{% url 'register' %}" class="boton">Registrarse</a>
-                </div>
-                <div class="botonera">
-                    <a href="{% url 'login' %}" class="boton">Iniciar Sesión!</a>
+                    <a href="{% url 'game' %}" class="boton">Jugar!</a>
                 </div>
                 <div><p> Divertite a lo grande!</p></div>
             </div>    
@@ -65,3 +59,4 @@
     </div>
 </body>
 </html>
+{% endif %}

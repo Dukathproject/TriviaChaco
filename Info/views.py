@@ -14,27 +14,43 @@ def index(request):
 #registrar usuario
 def register(request):
     if request.method == 'POST':
-        register_post(request)  
-        form = RegisterForm()
-        return render(request, "register.html", {'form': form})
-    else:
-        form = RegisterForm()
-        return render(request, "register.html", {'form': form})
+        msg = register_post(request) 
+        if msg[0]:     
+            #si el usuario no existe, lo crea y redirige al index con mensaje de exito.
+            return render(request, "index.html", {'msg': msg[1]})
+        else:
+            #si el usuario ya existe redirige al register con mensaje de usuario existente.
+            form = RegisterForm()
+            return render(request, "register.html", {'form': form, 'msg': msg[1]})
+    form = RegisterForm()
+    return render(request, "register.html", {'form': form})
 
 #loguear usuario
 def login(request):
     if request.method == 'POST':
         user_login(request)
         if request.user.is_authenticated:
-            questions_list = questions()
-            return render(request, "game.html", {'question':questions_list})
+            return render(request, "lobby.html")
         else:
             form = LoginForm()
             return render(request, "login.html", {'form': form, 'alert': 'El usuario y/o contraseña no corresponden a alguien registrado.'})        
     form = LoginForm()
     return render(request, "login.html", {'form': form})
-    
-    
+ 
+def lobby(request):
+    if request.user.is_authenticated:
+        return render(request, "lobby.html")
+    else:
+        form = LoginForm()
+        return render(request, "login.html", {'form': form, 'alert': 'Para entrar al lobby debe iniciar sesión.'}) 
+       
+def game(request):
+    if request.user.is_authenticated:
+        questions_list = questions()
+        return render(request, "game.html", {'question':questions_list})
+    else:
+        form = LoginForm()
+        return render(request, "login.html", {'form': form, 'alert': 'Para jugar debe iniciar sesión.'})
     
 def user_logout(request):
     logout(request)
