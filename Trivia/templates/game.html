@@ -44,10 +44,12 @@
                 <div class="formulario">
                     <div class="textsalto">
                         <img src="{% static 'media/chacotrivialogo.png'%}">
-                        <p> Pregunta 1</p></div>
-                        <div class="pregresp">
-                        <div class="pregunta">1. ¿El Chaco fue Territorio Nacional?<br />
-                        </div>
+                        <p> Pregunta 1</p>
+                        <h1>{{ question.question_1.formula }}</h1>
+                        <p>{{ question.question_1.respuesta_1.formula }}</p>
+                        <p>{{ question.question_1.respuesta_2.formula }}</p>
+                        <p>{{ question.question_1.respuesta_3.formula }}</p>
+                    </div>
                         <p>tiempo restante: {{tiempo}}</p>
                         <div class="respuestas">
                           <input type="radio" name="preg1" value="1" /> Sí<br />

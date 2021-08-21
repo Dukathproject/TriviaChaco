@@ -2,8 +2,39 @@ from MySQLdb import _mysql
 from Trivia.forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-#conectar a la base de datos
-# db=_mysql.connect(host="127.0.0.1",user="root", passwd="dukath1234",db="informatorio", port=3306)
+from django.db import models
+from Trivia.models import Config_Partida, Pregunta, Respuesta, Eleccion_del_Usuario
+import random
+
+#----------------------------------
+#Consultas del juego
+def questions():
+    #consulta todas las preguntas
+    p = Pregunta.objects.all().values()
+    r = Respuesta.objects.all().values()
+    # r = Respuesta.objects.all().filter(pregunta_id=21)['respuesta']
+    questions_list = {}
+    for i in range(5):
+        #numero al azar segun cantidad de preguntas totales
+        randNum = random.randint(0,len(p))
+        #de las preguntas consultadas, se toman 5 al azar y se guarda 
+        questions_list['question_' + str(i+1)] = {
+            'id': p[randNum]['id'],
+            'formula': p[randNum]['formula']
+            }
+        #según las preguntas al azar tomadas se filtran las respectivas respuestas y se agregan a questions_list
+        resp_cont = 0
+        for respuesta in r:
+            if respuesta['pregunta_id'] == randNum+1:
+                resp_cont = resp_cont + 1
+                questions_list['question_' + str(i+1)]['respuesta_' + str(resp_cont)] = {
+                    'formula': respuesta['formula'],
+                    'correcta': respuesta['correcta']
+                }
+    return questions_list
+
+
+
 
 #funcion para consultar si existe usuario en db, si no existe lo agrega
 def register_post(request):

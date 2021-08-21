@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from MySQLdb import _mysql
 from Trivia.forms import RegisterForm, LoginForm
-from .db import register_post, user_login
+from .db import register_post, user_login, questions
 from django.contrib.auth import logout
 
 
@@ -26,7 +26,8 @@ def login(request):
     if request.method == 'POST':
         user_login(request)
         if request.user.is_authenticated:
-            return render(request, "game.html")
+            questions_list = questions()
+            return render(request, "game.html", {'question':questions_list})
         else:
             form = LoginForm()
             return render(request, "login.html", {'form': form, 'alert': 'El usuario y/o contraseña no corresponden a alguien registrado.'})        
