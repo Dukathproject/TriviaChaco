@@ -5,6 +5,7 @@ from MySQLdb import _mysql
 from Trivia.forms import RegisterForm, LoginForm
 from .db import register_post, user_login, questions
 from django.contrib.auth import logout
+import json
 
 
 
@@ -46,7 +47,7 @@ def lobby(request):
        
 def game(request):
     if request.user.is_authenticated:
-        questions_list = questions()
+        questions_list = json.dumps(questions())
         return render(request, "game.html", {'question':questions_list})
     else:
         form = LoginForm()

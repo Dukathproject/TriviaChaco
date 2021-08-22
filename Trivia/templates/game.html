@@ -43,10 +43,12 @@
             <div class="articulo">
                 <div class="formulario">
                     <div class="textsalto">
-                        <input type="hidden" id="question" name="variable" value="{{ question }}">
-                        <p> Pregunta 1</p>
-                        <h3>Categoría: {{ question.question_1.categoría }}</h3>
-                        <h2>{{ question.question_1.formula }}</h2>
+                        <script id="question" type="application/json">
+                            {{ question|safe }}
+                        </script>
+                        <p id="númeroPregunta"></p>
+                        <h3 id="categoría"></h3>
+                        <h2 id="questionFormula"></h2>
                         <p id="timer"></p>
                         
                         <div class="respuestas">
@@ -63,13 +65,12 @@
                             </div>
                             <div class="columna2">
                                 <p class="alturaBoton" id="textoRespuesta1">
-                                    {{ question.question_1.respuesta_1.formula }}
                                 </p>
                                 <p class="alturaBoton" id="textoRespuesta2">
-                                    {{ question.question_1.respuesta_2.formula }}
+                                   
                                 </p>
                                 <p class="alturaBoton" id="textoRespuesta3">
-                                    {{ question.question_1.respuesta_3.formula }}
+                                    
                                 </p>
                             </div>
                         </div>

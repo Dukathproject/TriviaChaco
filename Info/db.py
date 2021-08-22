@@ -6,6 +6,7 @@ from django.db import models
 from Trivia.models import Config_Partida, Pregunta, Respuesta, Ranking
 import random
 
+
 #----------------------------------
 #Consultas del juego
 def questions():
@@ -20,20 +21,20 @@ def questions():
         randNum = random.randint(0,len(p)-1)
         #de las preguntas consultadas, se toman 5 al azar y se guarda 
         questions_list['question_' + str(i+1)] = {
-            'id': p[randNum]['id'],
-            'formula': p[randNum]['formula'],
-            'categoría': c[p[randNum]['trivia_id']-1]['nombre']
+            "id": p[randNum]['id'],
+            "formula": p[randNum]['formula'],
+            "categoría": c[p[randNum]['trivia_id']-1]['nombre'],
+            "respuestas": []
             }
         #según las preguntas al azar tomadas se filtran las respectivas respuestas y se agregan a questions_list
         resp_cont = 0
         for respuesta in r:
-            #HAY ERROR CUANDO SALE ID TOTAL DE LA DB, GESTIONAR EL NUMERO MAXIMO
             if respuesta['pregunta_id'] == randNum+1:
                 resp_cont = resp_cont + 1
-                questions_list['question_' + str(i+1)]['respuesta_' + str(resp_cont)] = {
-                    'formula': respuesta['formula'],
-                    'correcta': respuesta['correcta']
-                }
+                questions_list['question_' + str(i+1)]['respuestas'].append({'respuesta_' + str(resp_cont): {
+                    "formula": respuesta['formula'],
+                    "correcta": respuesta['correcta']
+                    }})
     return questions_list
 
 
