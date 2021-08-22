@@ -43,16 +43,40 @@
             <div class="articulo">
                 <div class="formulario">
                     <div class="textsalto">
-                        <img src="{% static 'media/chacotrivialogo.png'%}">
+                        <input type="hidden" id="question" name="variable" value="{{ question }}">
                         <p> Pregunta 1</p>
-                        <h1>{{ question.question_1.formula }}</h1>
-                        <p>{{ question.question_1.respuesta_1.formula }}</p>
-                        <p>{{ question.question_1.respuesta_2.formula }}</p>
-                        <p>{{ question.question_1.respuesta_3.formula }}</p>
-                    </div>
-                        <p>tiempo restante: {{tiempo}}</p>
+                        <h3>Categoría: {{ question.question_1.categoría }}</h3>
+                        <h2>{{ question.question_1.formula }}</h2>
+                        <p id="timer"></p>
+                        
                         <div class="respuestas">
-                          <input type="radio" name="preg1" value="1" /> Sí<br />
+                            <div class="columna1">
+                                <p class="alturaBoton">
+                                    <input id="boton1" type="button" name="respuesta_1" value="1" />
+                                </p>
+                                <p class="alturaBoton">
+                                    <input id="boton2" type="button" name="respuesta_2" value="2" />
+                                </p>
+                                <p class="alturaBoton">
+                                    <input id="boton3" type="button" name="respuesta_3" value="3" />
+                                </p>
+                            </div>
+                            <div class="columna2">
+                                <p class="alturaBoton" id="textoRespuesta1">
+                                    {{ question.question_1.respuesta_1.formula }}
+                                </p>
+                                <p class="alturaBoton" id="textoRespuesta2">
+                                    {{ question.question_1.respuesta_2.formula }}
+                                </p>
+                                <p class="alturaBoton" id="textoRespuesta3">
+                                    {{ question.question_1.respuesta_3.formula }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                        
+                        <!-- <div class="respuestas">
+                          <!-- <input type="radio" name="preg1" value="1" /> Sí<br />
                           <input type="radio" name="preg1" value="2" /> No<br />
                           <input type="radio" name="preg1" value="3" /> Ns/Nc<br />
                         </div>
@@ -60,7 +84,7 @@
                         
                         <div class="botonera">
                             <a href='#' class="boton">VERIFICAR</a>
-                        </div>    
+                        </div>     -->
                         
                     </div>
                 </div>
@@ -72,7 +96,7 @@
             </nav>
         </footer>
     </div>
-    
+    <script src="{% static 'game.js' %}" crossorigin="anonymous"></script>
 </body>
 </html>
 {% endif %}

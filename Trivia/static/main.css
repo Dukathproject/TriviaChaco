@@ -101,6 +101,27 @@ a{
         overflow: hidden;
         
     }
+
+    .respuestas {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        justify-content: center;
+    }
+    
+    .columna1{
+    text-align: right;
+    }
+    
+    .columna2{
+    text-align: left;
+    }
+
+    .alturaBoton {
+        height: 60px;
+        align-items: center;
+        padding: 0;
+    }
+
     @keyframes rotate {
         to{ transform: rotate(360deg); }
       }
@@ -186,7 +207,8 @@ a{
             background: url('./media/fondocontenedor.png');
             background-color: rgba(255, 255, 255);
             width: 100%;
-            align-items: center;
+            justify-content: right;
+            align-items:flex-start;
             font-family: 'Rubik', sans-serif;
             border-radius: 15px;
         }

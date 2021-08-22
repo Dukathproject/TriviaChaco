@@ -60,7 +60,3 @@ def user_logout(request):
 
 def us(request):
     return render(request, "us.html")
-
-
-def game(request):
-    return render(request, "game.html")

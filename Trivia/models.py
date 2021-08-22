@@ -33,10 +33,16 @@ class Respuesta(models.Model):
     def __str__(self):
         return f"Pregunta: {self.pregunta.formula}, answer: {self.formula}, correct: {self.correcta}"
     
-class Eleccion_del_Usuario(models.Model):
-    trivia = models.ForeignKey(Config_Partida, on_delete=models.CASCADE)
+class Ranking(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    aciertos = models.FloatField()
+    aciertos = models.IntegerField()
     
     def __str__(self):
         return str(self.trivia)
+# class Eleccion_del_Usuario(models.Model):
+#     trivia = models.ForeignKey(Config_Partida, on_delete=models.CASCADE)
+#     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+#     aciertos = models.FloatField()
+    
+    # def __str__(self):
+    #     return str(self.trivia)

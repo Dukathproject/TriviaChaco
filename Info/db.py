@@ -3,7 +3,7 @@ from Trivia.forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db import models
-from Trivia.models import Config_Partida, Pregunta, Respuesta, Eleccion_del_Usuario
+from Trivia.models import Config_Partida, Pregunta, Respuesta, Ranking
 import random
 
 #----------------------------------
@@ -12,26 +12,28 @@ def questions():
     #consulta todas las preguntas
     p = Pregunta.objects.all().values()
     r = Respuesta.objects.all().values()
+    c = Config_Partida.objects.all().values()
     # r = Respuesta.objects.all().filter(pregunta_id=21)['respuesta']
     questions_list = {}
     for i in range(5):
         #numero al azar segun cantidad de preguntas totales
-        randNum = random.randint(0,len(p))
+        randNum = random.randint(0,len(p)-1)
         #de las preguntas consultadas, se toman 5 al azar y se guarda 
         questions_list['question_' + str(i+1)] = {
             'id': p[randNum]['id'],
-            'formula': p[randNum]['formula']
+            'formula': p[randNum]['formula'],
+            'categoría': c[p[randNum]['trivia_id']-1]['nombre']
             }
         #según las preguntas al azar tomadas se filtran las respectivas respuestas y se agregan a questions_list
         resp_cont = 0
         for respuesta in r:
+            #HAY ERROR CUANDO SALE ID TOTAL DE LA DB, GESTIONAR EL NUMERO MAXIMO
             if respuesta['pregunta_id'] == randNum+1:
                 resp_cont = resp_cont + 1
                 questions_list['question_' + str(i+1)]['respuesta_' + str(resp_cont)] = {
                     'formula': respuesta['formula'],
                     'correcta': respuesta['correcta']
                 }
-        print(questions_list)
     return questions_list
 
 
