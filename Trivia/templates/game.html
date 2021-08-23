@@ -39,58 +39,44 @@
                 </div>
             </div>
         </header>
-        <div class="principal">
-            <div class="articulo">
-                <div class="formulario">
-                    <div class="textsalto">
-                        <script id="question" type="application/json">
-                            {{ question|safe }}
-                        </script>
-                        <p id="númeroPregunta"></p>
-                        <h3 id="categoría"></h3>
-                        <h2 id="questionFormula"></h2>
-                        <p id="timer"></p>
-                        
-                        <div class="respuestas">
-                            <div class="columna1">
-                                <p class="alturaBoton">
-                                    <input id="boton1" type="button" name="respuesta_1" value="1" />
-                                </p>
-                                <p class="alturaBoton">
-                                    <input id="boton2" type="button" name="respuesta_2" value="2" />
-                                </p>
-                                <p class="alturaBoton">
-                                    <input id="boton3" type="button" name="respuesta_3" value="3" />
-                                </p>
-                            </div>
-                            <div class="columna2">
-                                <p class="alturaBoton" id="textoRespuesta1">
-                                </p>
-                                <p class="alturaBoton" id="textoRespuesta2">
-                                   
-                                </p>
-                                <p class="alturaBoton" id="textoRespuesta3">
-                                    
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                        
-                        <!-- <div class="respuestas">
-                          <!-- <input type="radio" name="preg1" value="1" /> Sí<br />
-                          <input type="radio" name="preg1" value="2" /> No<br />
-                          <input type="radio" name="preg1" value="3" /> Ns/Nc<br />
-                        </div>
-                      </div>
-                        
-                        <div class="botonera">
-                            <a href='#' class="boton">VERIFICAR</a>
-                        </div>     -->
-                        
-                    </div>
+        <div class="principalPartida">
+            <div class="partidaStats">
+                <div class="textsalto">
+                    <script id="question" type="application/json">
+                        {{ question|safe }}
+                    </script>
+
+                    <p id="timer">Tiempo restante: 15</p>
+                    <p id="númeroPregunta"></p>
+                    <p id="categoría"></p>
                 </div>
             </div>
         </div>
+
+        <div class="principal">
+            <div class="columna1">
+                <div class="formulario">
+                    <div class="respuestas">
+                        <h2 id="questionFormula"></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="columna2">
+                <div class="formulario">
+                    <div class="respuestas">
+                        <p class="alturaBoton">
+                            <input class="boton" id="botón1" onclick="selección(1)" type="button" name="respuesta_1" value="" />
+                        </p>
+                        <p class="alturaBoton">
+                            <input class="boton" id="botón2" onclick="selección(2)" type="button" name="respuesta_2" value="" />
+                        </p>
+                        <p class="alturaBoton">
+                            <input class="boton" id="botón3" onclick="selección(3)" type="button" name="respuesta_3" value="" />
+                        </p>
+                    </div>
+                </div>
+            </div>     
+        </div>            
         <footer class="footer">
             <nav class="pie">
                 <a href="#">Desarrollado por Grupo 7</a>

@@ -3,14 +3,11 @@ var question = document.getElementById("question").textContent;
 var question_parsed = JSON.parse(question);
 var questionDiv = document.getElementById("question");
 questionDiv.remove();
-var boton1 = document.getElementById("boton1");
-var boton2 = document.getElementById("boton2");
-var boton3 = document.getElementById("boton3");
 var númeroPregunta = document.getElementById("númeroPregunta");
 var categoría = document.getElementById("categoría");
 var questionFormula = document.getElementById("questionFormula");
 var timer = document.getElementById("timer");
-var time = 10;
+var time = 15;
 
 //PUNTAJE
 var puntaje = 0;
@@ -24,8 +21,11 @@ categoría.textContent = "Categoría : " + question_parsed['question_' + nPregun
 //ACTUALIZADO DE RESPUESTAS
 var cont = 0;
 for(var i = 1; i <= question_parsed['question_' + nPregunta]['respuestas'].length; i++){
-    var textoRespuesta = document.getElementById("textoRespuesta" + (i));
-    textoRespuesta.textContent = question_parsed['question_' + nPregunta]['respuestas'][cont]['respuesta_' + (i)]['formula'];
+    //asigna valor al botón
+    var botón = document.getElementById("botón" + i);
+    botón.value = question_parsed['question_' + nPregunta]['respuestas'][cont]['respuesta_' + (i)]['formula'];
+    // var textoRespuesta = document.getElementById("textoRespuesta" + (i));
+    // textoRespuesta.textContent = question_parsed['question_' + nPregunta]['respuestas'][cont]['respuesta_' + (i)]['formula'];
     cont++;
 };
 cont = 0;
@@ -39,3 +39,9 @@ setInterval(function(){
         timer.textContent = 'Tiempo agotado. ¡FIN DE LA PARTIDA!';
     }
 }, 1000);
+
+
+//BOTON DE SELECCIÓN
+function selección(boton) {
+    var selección = document.getElementById("botón" + boton).value;
+}

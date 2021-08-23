@@ -101,19 +101,34 @@ a{
         overflow: hidden;
         
     }
+    .principalPartida { 
+        background-color: #f9dc5c00;
+        display: block;
+        width: 90%;
+        height: 80%;
+        margin: auto;
+        margin-bottom: 0;
+        border: 1px #2D2B1F;
+        border-radius: 5px;
+        justify-content: center;
+        z-index: 100;
+        overflow: hidden;
+        
+    }
 
     .respuestas {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
+        display: block;
         justify-content: center;
     }
     
     .columna1{
-    text-align: right;
+        width: 500px;
+        text-align: center;
     }
     
     .columna2{
-    text-align: left;
+        width: 500px;
+        text-align: left;
     }
 
     .alturaBoton {
@@ -161,9 +176,9 @@ a{
                 justify-content: center;
                 color: #fff;
                 text-transform: uppercase;
-                
+                border-width: 0;
                 border-radius: 10px;
-                width: 50%;
+                width: 100%;
             }
             .boton:hover{
                 font-weight: 700;
@@ -179,29 +194,35 @@ a{
             color: #fff;
             text-align: center;
             font-family: 'Rubik', sans-serif;
-            text-shadow: 1px 2px 2px #333333;
             font-size: large;
 
         }
         .equipo{
             display: flex;
-        }    
+        }   
+        
+        .textoDesc{
+            background: url('./media/fondocontenedor.png');
+            border-radius: 15px;
+            border: #f9dc5c 1px solid;
+            font-family: 'Roboto', sans-serif;
+        }
             .contenedor{
-                background: rgb(255, 255, 255, .7);
-                border-radius: 5px;
-                border: #f9dc5c 1px solid;
-                font-family: 'Roboto', sans-serif;
                 justify-content: center;
                 flex-direction: row;
-                
+                margin-left: 5px;                
+                margin-right: 5px;                
             }
                 div.avatar {
-                            height: 100px;
-                            width: 100px;
+                            margin-bottom: 20px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            height: 250px;
+                            width: 250px;
                             background-repeat: no-repeat;
-                            background-position: 100%;
+                            background-position: center;
                             border-radius: 50%;
-                            background-size: 200% auto;
+                            background-size: 100% auto;
                         }
         .formulario{
             background: url('./media/fondocontenedor.png');
@@ -209,6 +230,13 @@ a{
             width: 100%;
             justify-content: right;
             align-items:flex-start;
+            font-family: 'Rubik', sans-serif;
+            border-radius: 15px;
+        }
+        .partidaStats{
+            background: url('./media/fondocontenedor.png');
+            background-color: rgba(255, 255, 255);
+            width: 100%;
             font-family: 'Rubik', sans-serif;
             border-radius: 15px;
         }
@@ -270,6 +298,19 @@ a{
                 text-decoration: none;
                 color: #fff;
             }
+#timer{
+    font-weight: 700;
+    font-size: 2em;
+    color: #f62929;
+}
+
+#Luciano{
+    background: url('.media/Luciano Gusberti.jpg');
+}
+
+#categoría{
+    font-weight: 300;
+}
 
 
 @media all and (max-width: 800px){

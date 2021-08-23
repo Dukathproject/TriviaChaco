@@ -21,17 +21,24 @@
         <header class="header">
             <div class="menu">
                 <div class="logo">
-                    <a href="{% url 'index' %}"><img src="{% static 'media/Altavoz.png'%}"></a>                 
+                    <a href="{% url 'index' %}"><img src="{% static 'media/ChacoTrivia.png'%}"></a>                 
                 </div>
                 <nav class="nav">
-                    <a href="{% url 'index' %}"><i class="fas fa-home"></i>Inicio</a>
                     <a href="{% url 'us' %}"><i class="fas fa-users"></i>Nosotros</a>
                     <a href="#"><i class="fas fa-gamepad"></i>El Juego</a>
                     <a href="#"><i class="fas fa-chart-bar"></i>Estadisticas</a>
                     <a href="#"><i class="fas fa-envelope"></i>Contacto</a>
                 </nav>
+                <div class="social">
+                    <div>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}"><i class="fas fa-users"></i>{{ user.username }}:Salir</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </header>
+        <div class="backgroundimage"></div>
         <div class="principal">
             <div class="articulo">
                 <div class="tituloequipo">
@@ -39,34 +46,45 @@
                 </div>
                 <div class="equipo">
                     <div class="contenedor">
-                        <div class="avatar" style="background-image: url('img/joven1.jpg')"></div>
-                        <div class="texto">
-                            <h2>Pipo Machete</h2>
+                        <div class="avatar" style="background-image: url({% static 'media/Luciano Gusberti.jpg' %})"></div>
+                        <div class="textoDesc">
+                            <h2>Luciano Gusberti</h2>
+                            <h4>Full Stack</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati asperiores sit facilis quod ipsum illum, alias velit itaque voluptatibus? Aut, quos. Exercitationem sint consequatur recusandae ut est facilis cupiditate!</p>
                         </div>                
                     </div>
                     <div class="contenedor">
                         <div class="avatar" style="background-image: url('img/joven2.jpg')"></div>
-                        <div class="texto">
-                            <h2>Carla Copiardi</h2>
+                        <div class="textoDesc">
+                            <h2>Acuña Dante Adrian</h2>
+                            <h4>Front End</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati asperiores sit facilis quod ipsum illum, alias velit itaque voluptatibus? Aut, quos. Exercitationem sint consequatur recusandae ut est facilis cupiditate!</p>
                         </div>
                                         
                     </div>
                     <div class="contenedor">
                         <div class="avatar" style="background-image: url('img/joven1.jpg')"></div>
-                        <div class="texto">
-                            <h2>Cacho Estaffeti</h2>
+                        <div class="textoDesc">
+                            <h2>Abba Gabriel</h2>
+                            <h4>Investigación y Base de Datos</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati asperiores sit facilis quod ipsum illum, alias velit itaque voluptatibus? Aut, quos. Exercitationem sint consequatur recusandae ut est facilis cupiditate!</p>
                         </div>                
                     </div>
                     <div class="contenedor">
                         <div class="avatar" style="background-image: url('img/joven2.jpg')"></div>
-                        <div class="texto">
-                            <h2>Franca Mentira</h2>
+                        <div class="textoDesc">
+                            <h2>Castillo Juan Fernando</h2>
+                            <h4>Maquetado</h4>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati asperiores sit facilis quod ipsum illum, alias velit itaque voluptatibus? Aut, quos. Exercitationem sint consequatur recusandae ut est facilis cupiditate!</p>
-                        </div>
-                                        
+                        </div>               
+                    </div>
+                    <div class="contenedor">
+                        <div class="avatar" style="background-image: url('img/joven2.jpg')"></div>
+                        <div class="textoDesc">
+                            <h2>Rojas Raul Alfredo</h2>
+                            <h4>Back End</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis obcaecati asperiores sit facilis quod ipsum illum, alias velit itaque voluptatibus? Aut, quos. Exercitationem sint consequatur recusandae ut est facilis cupiditate!</p>
+                        </div>               
                     </div>
                 </div>    
                 
