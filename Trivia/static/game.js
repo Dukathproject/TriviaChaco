@@ -11,24 +11,23 @@ var time = 15;
 
 //PUNTAJE
 var puntaje = 0;
-var nPregunta = puntaje + 1;
+var nPregunta = 1;
 
-//ACTUALIZADO DE TEXTOS
-númeroPregunta.textContent = "Pregunta nº: " + nPregunta;
-questionFormula.textContent = question_parsed['question_' + nPregunta]['formula'];
-categoría.textContent = "Categoría : " + question_parsed['question_' + nPregunta]['categoría'];
+function sigPregunta(){
+    //ACTUALIZADO DE TEXTOS
+    númeroPregunta.textContent = "Pregunta nº: " + nPregunta;
+    questionFormula.textContent = question_parsed['question_' + nPregunta]['formula'];
+    categoría.textContent = "Categoría : " + question_parsed['question_' + nPregunta]['categoría'];
 
-//ACTUALIZADO DE RESPUESTAS
-var cont = 0;
-for(var i = 1; i <= question_parsed['question_' + nPregunta]['respuestas'].length; i++){
-    //asigna valor al botón
-    var botón = document.getElementById("botón" + i);
-    botón.value = question_parsed['question_' + nPregunta]['respuestas'][cont]['respuesta_' + (i)]['formula'];
-    // var textoRespuesta = document.getElementById("textoRespuesta" + (i));
-    // textoRespuesta.textContent = question_parsed['question_' + nPregunta]['respuestas'][cont]['respuesta_' + (i)]['formula'];
-    cont++;
-};
-cont = 0;
+    //ACTUALIZADO DE RESPUESTAS
+    var cont = 0;
+    for(var i = 1; i <= question_parsed['question_' + nPregunta]['respuestas'].length; i++){
+        var botón = document.getElementById("botón" + i);
+        botón.value = question_parsed['question_' + nPregunta]['respuestas'][cont]['respuesta_' + (i)]['formula'];
+        cont++;
+    };
+    cont = 0;
+}
 
 //CUENTA REGRESIVA
 setInterval(function(){
@@ -40,8 +39,17 @@ setInterval(function(){
     }
 }, 1000);
 
-
 //BOTON DE SELECCIÓN
 function selección(boton) {
-    var selección = document.getElementById("botón" + boton).value;
+    var check = question_parsed['question_' + nPregunta]['respuestas'][boton-1]['respuesta_' + boton]['correcta'];
+    if(check === true){
+        console.log(check === true);
+        puntaje++;
+        nPregunta++;
+        time = 15;
+        sigPregunta();
+    }else{
+        //FINALIZAR EL JUEGO
+    };
 }
+sigPregunta()
