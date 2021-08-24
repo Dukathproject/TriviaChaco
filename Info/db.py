@@ -1,5 +1,5 @@
 from MySQLdb import _mysql
-from Trivia.forms import RegisterForm, LoginForm
+from Trivia.forms import RegisterForm, LoginForm, RankingForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db import models
@@ -54,8 +54,14 @@ def register_post(request):
         msg = [False, "Usuario ya existente, ingrese otro nombre de usuario."]
         return msg
             
-            
- 
+def ranking_post(request):
+    form = RankingForm(request.POST)
+    if form.is_valid():
+        form_data = form.cleaned_data
+        user = User.objects.get(id=request.user.id)
+        result = Ranking(usuario=user, aciertos=form_data['result'])
+        result.save()
+        
  
 def user_login(request):
     form = LoginForm(request.POST)

@@ -2,8 +2,8 @@
 # from django.template import Template, Context
 from django.shortcuts import render, redirect
 from MySQLdb import _mysql
-from Trivia.forms import RegisterForm, LoginForm
-from .db import register_post, user_login, questions
+from Trivia.forms import RegisterForm, LoginForm, RankingForm
+from .db import register_post, user_login, questions, ranking_post
 from django.contrib.auth import logout
 import json
 
@@ -46,9 +46,14 @@ def lobby(request):
         return render(request, "login.html", {'form': form, 'alert': 'Para entrar al lobby debe iniciar sesión.'}) 
        
 def game(request):
+    if request.method == 'POST':
+        ranking_post(request)
+        if request.user.is_authenticated:
+            return render(request, "lobby.html")
     if request.user.is_authenticated:
         questions_list = json.dumps(questions())
-        return render(request, "game.html", {'question':questions_list})
+        form = RankingForm()
+        return render(request, "game.html", {'question':questions_list, 'form': form})
     else:
         form = LoginForm()
         return render(request, "login.html", {'form': form, 'alert': 'Para jugar debe iniciar sesión.'})

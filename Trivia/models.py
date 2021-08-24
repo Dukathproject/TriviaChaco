@@ -36,9 +36,10 @@ class Respuesta(models.Model):
 class Ranking(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     aciertos = models.IntegerField()
+    fecha = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return str(self.trivia)
+        return f"Usuario: {self.usuario}, Aciertos: {self.aciertos}, Fecha: {self.fecha}"
 # class Eleccion_del_Usuario(models.Model):
 #     trivia = models.ForeignKey(Config_Partida, on_delete=models.CASCADE)
 #     usuario = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -75,7 +75,11 @@
                         </p>
                     </div>
                 </div>
-            </div>     
+            </div> 
+            <form id="result" action="/game/" method="post">
+                {% csrf_token %}
+                {{ form }}
+            </form>    
         </div>            
         <footer class="footer">
             <nav class="pie">

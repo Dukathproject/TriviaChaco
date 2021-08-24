@@ -313,6 +313,9 @@ a{
     font-weight: 300;
 }
 
+#result{
+    display: none;
+}
 
 @media all and (max-width: 800px){
     .principal{

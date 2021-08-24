@@ -1,4 +1,5 @@
 //OBTENER ELEMENTOS DEL HTML
+var result = document.getElementById("id_result");
 var question = document.getElementById("question").textContent;
 var question_parsed = JSON.parse(question);
 var questionDiv = document.getElementById("question");
@@ -39,16 +40,19 @@ setInterval(function(){
     }
 }, 1000);
 
+
 //BOTON DE SELECCIÓN
 function selección(boton) {
     var check = question_parsed['question_' + nPregunta]['respuestas'][boton-1]['respuesta_' + boton]['correcta'];
     if(check === true){
-        console.log(check === true);
         puntaje++;
         nPregunta++;
         time = 15;
         sigPregunta();
     }else{
+        result.value = puntaje;
+        document.getElementById("result").submit();
+        console.log("Fin del juego.")
         //FINALIZAR EL JUEGO
     };
 }

@@ -8,3 +8,6 @@ class RegisterForm(forms.Form):
 class LoginForm(forms.Form):
     name = forms.CharField(label='name', max_length=100)
     password = forms.CharField(max_length=32, widget=forms.PasswordInput)
+    
+class RankingForm(forms.Form):
+    result = forms.IntegerField(label='result')
