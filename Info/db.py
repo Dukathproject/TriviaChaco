@@ -11,12 +11,16 @@ import random
 #Consultas del juego
 def questions():
     #consulta todas las preguntas
-    p = Pregunta.objects.all().values()
+    p_queryset = Pregunta.objects.all().values()
     r = Respuesta.objects.all().values()
     c = Config_Partida.objects.all().values()
+
+    p = []
+    for question in p_queryset:
+        p.append(question)
     # r = Respuesta.objects.all().filter(pregunta_id=21)['respuesta']
     questions_list = {}
-    for i in range(5):
+    for i in range(len(p_queryset)):
         #numero al azar segun cantidad de preguntas totales
         randNum = random.randint(0,len(p)-1)
         #de las preguntas consultadas, se toman 5 al azar y se guarda 
@@ -35,6 +39,7 @@ def questions():
                     "formula": respuesta['formula'],
                     "correcta": respuesta['correcta']
                     }})
+        del p[randNum]
     return questions_list
 
 
