@@ -8,11 +8,12 @@ from django.contrib.auth import logout
 import json
 
 
-
+#INDEX-------------------------------------------------------------------------
 def index(request):
     return render(request, "index.html")
 
-#registrar usuario
+
+#REGISTER USER-----------------------------------------------------------------
 def register(request):
     if request.method == 'POST':
         msg = register_post(request) 
@@ -26,7 +27,8 @@ def register(request):
     form = RegisterForm()
     return render(request, "register.html", {'form': form})
 
-#loguear usuario
+
+#LOG IN------------------------------------------------------------------------
 def login(request):
     if request.method == 'POST':
         user_login(request)
@@ -37,19 +39,22 @@ def login(request):
             return render(request, "login.html", {'form': form, 'alert': 'El usuario y/o contraseña no corresponden a alguien registrado.'})        
     form = LoginForm()
     return render(request, "login.html", {'form': form})
- 
+
+
+#LOBBY-------------------------------------------------------------------------
 def lobby(request):
     if request.user.is_authenticated:
         return render(request, "lobby.html")
     else:
-        form = LoginForm()
-        return render(request, "login.html", {'form': form, 'alert': 'Para entrar al lobby debe iniciar sesión.'}) 
-       
+        return render(request, "index.html") 
+  
+  
+#THE GAME-------------------------------------------------------------------   
 def game(request):
     if request.method == 'POST':
-        ranking_post(request)
+        result = ranking_post(request)
         if request.user.is_authenticated:
-            return render(request, "lobby.html")
+            return render(request, "result.html", {'result': result})
     if request.user.is_authenticated:
         questions_list = json.dumps(questions())
         form = RankingForm()
@@ -57,12 +62,14 @@ def game(request):
     else:
         form = LoginForm()
         return render(request, "login.html", {'form': form, 'alert': 'Para jugar debe iniciar sesión.'})
-    
+
+
+#LOG OUT-------------------------------------------------------------------    
 def user_logout(request):
     logout(request)
     return render(request, "index.html")
     
     
-
+#US----------------------------------------------------------------------------
 def us(request):
     return render(request, "us.html")

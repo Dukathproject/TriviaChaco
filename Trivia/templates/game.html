@@ -8,8 +8,8 @@
                     </script>
 
                     <p id="timer">Tiempo restante: 15</p>
-                    <p id="númeroPregunta"></p>
-                    <p id="categoría"></p>
+                    <p class="stats" id="númeroPregunta"></p>
+                    <p class="stats" id="categoría"></p>
                 </div>
             </div>
         </div>
@@ -41,7 +41,14 @@
                 {% csrf_token %}
                 {{ form }}
             </form>    
-        </div>            
+        </div>    
+        <div class="principalPartida">
+            <div class="partidaStats">
+                <div class="textsalto">
+                    <p id="congrats"></p>
+                </div>
+            </div>
+        </div>        
         <footer class="footer">
             <nav class="pie">
                 <a href="#">Desarrollado por Grupo 7</a>

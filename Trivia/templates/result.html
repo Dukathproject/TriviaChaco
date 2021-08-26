@@ -1,0 +1,21 @@
+{% include 'header.html' %}
+{% load static %}
+        <div class="principalPartida">
+            <div class="partidaStats">
+                <div class="textsalto">
+                    <p id="resumen">Resumen de la partida:</p>
+                    <p id="puntaje">Puntaje: {{result.points}}</p>
+                    <p id="pregunta">Pregunta final: {{ result.pregunta}}</p>
+                    <p id="incorrecta">Respuesta seleccionada: {{ result.incorrecta}}</p>
+                    <p id="correcta">Respuesta correcta: {{ result.correcta}}</p>
+                </div>
+            </div>
+        </div>        
+        <footer class="footer">
+            <nav class="pie">
+                <a href="#">Desarrollado por Grupo 7</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

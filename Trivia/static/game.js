@@ -1,5 +1,10 @@
-//OBTENER ELEMENTOS DEL HTML
+//OBTENER DATOS PARA RANKING
 var result = document.getElementById("id_result");
+var correct = document.getElementById("id_correcta");
+var incorrect = document.getElementById("id_incorrecta");
+var pregunta = document.getElementById("id_pregunta");
+
+//OBTENER ELEMENTOS DEL HTML
 var question = document.getElementById("question").textContent;
 var question_parsed = JSON.parse(question);
 var questionDiv = document.getElementById("question");
@@ -8,6 +13,7 @@ var númeroPregunta = document.getElementById("númeroPregunta");
 var categoría = document.getElementById("categoría");
 var questionFormula = document.getElementById("questionFormula");
 var timer = document.getElementById("timer");
+var congrats = document.getElementById("congrats");
 var time = 15;
 
 //PUNTAJE
@@ -19,7 +25,6 @@ function sigPregunta(){
     númeroPregunta.textContent = "Pregunta nº: " + nPregunta;
     questionFormula.textContent = question_parsed['question_' + nPregunta]['formula'];
     categoría.textContent = "Categoría : " + question_parsed['question_' + nPregunta]['categoría'];
-
     //ACTUALIZADO DE RESPUESTAS
     var cont = 0;
     for(var i = 1; i <= question_parsed['question_' + nPregunta]['respuestas'].length; i++){
@@ -41,6 +46,13 @@ setInterval(function(){
 }, 1000);
 
 
+function congratsText(){
+    congrats.textContent = "¡MUY BIEN!";
+    setTimeout(function(){
+        congrats.textContent = "";;
+        }, 3000);
+}
+
 //BOTON DE SELECCIÓN
 function selección(boton) {
     var check = question_parsed['question_' + nPregunta]['respuestas'][boton-1]['respuesta_' + boton]['correcta'];
@@ -48,11 +60,23 @@ function selección(boton) {
         puntaje++;
         nPregunta++;
         time = 15;
+        congratsText();  
         sigPregunta();
     }else{
+        //GUARDAR VALOR TOTAL
         result.value = puntaje;
+        //GUARDAR VALOR PREGUNTA
+        pregunta.value = questionFormula.textContent;
+        //GUARDAR VALOR DE RESPUESTA CORRECTA
+        for(var i = 1; i <= 3; i++){
+            var correct_answer = question_parsed['question_' + nPregunta]['respuestas'][i-1];
+            if(correct_answer['respuesta_' + i]['correcta'] === true){
+                correct.value = correct_answer['respuesta_' + i]['formula'];
+            }
+        }
+        //GUARDAR VALOR DE RESPUESTA INCORRECTA
+        incorrect.value = question_parsed['question_' + nPregunta]['respuestas'][boton-1]['respuesta_' + boton]['formula'];
         document.getElementById("result").submit();
-        console.log("Fin del juego.")
         //FINALIZAR EL JUEGO
     };
 }

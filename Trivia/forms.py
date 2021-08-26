@@ -11,3 +11,6 @@ class LoginForm(forms.Form):
     
 class RankingForm(forms.Form):
     result = forms.IntegerField(label='result')
+    pregunta = forms.CharField(label="correcta", max_length=200)
+    correcta = forms.CharField(label="correcta", max_length=200)
+    incorrecta = forms.CharField(label="incorrecta", max_length=200)

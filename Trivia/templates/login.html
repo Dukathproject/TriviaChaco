@@ -3,25 +3,23 @@
         <div class="principal">
             <div class="articulo">
                 <div class="formulario">
-                    <div class="textsalto">
-                        <img src="{% static 'media/chacotrivialogo.png'%}">
-                        <p> Divertite a lo grande!</p></div>
-                        <div class="signup">
-                            <div class="center">
-                                <h2 class="form-title" id="login">Ingresar</h2>
-                                <p> {{ alert }}</p>
-                                <div class="form-holder">
-                                    <!-- FORMULARIO REGISTRO -->
-                                    <form action="/login/" method="post">
-                                        {% csrf_token %}
-                                        {{ form }}
-                                        <div class="botonera">
-                                            <input class="boton" type="submit" value="Ingresar">
-                                        </div>
-                                    </form>
-                                </div>   
-                            </div>
+                    <div class="signup">
+                        <div class="center">
+                            <h2 class="form-title" id="login">Ingresar</h2>
+                            <p> {{ alert }}</p>
+                            <div class="form-holder">
+                                <!-- FORMULARIO REGISTRO -->
+                                <form action="/login/" method="post">
+                                    {% csrf_token %}
+                                    {{ form }}
+                                    <div class="botonera">
+                                        <input class="boton" type="submit" value="Ingresar">
+                                    </div>
+                                </form>
+                                <!--  -->
+                            </div>   
                         </div>
+                    </div>
                 </div>
             </div>
         </div>

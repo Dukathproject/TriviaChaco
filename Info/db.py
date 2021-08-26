@@ -66,6 +66,9 @@ def ranking_post(request):
         user = User.objects.get(id=request.user.id)
         result = Ranking(usuario=user, aciertos=form_data['result'])
         result.save()
+        result = {'points': form_data['result'], 'pregunta': form_data['pregunta'], 'correcta': form_data['correcta'], 'incorrecta': form_data['incorrecta']}
+        return result
+    
         
  
 def user_login(request):

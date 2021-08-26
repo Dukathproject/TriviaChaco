@@ -299,10 +299,61 @@ a{
                 text-decoration: none;
                 color: #fff;
             }
-#timer{
+
+.stats{
+    color: black;
+}
+
+.eljuego{
+    display: flex;
+    font-family: 'Rubik', sans-serif;
+    width: 100%;
+    border-radius: 10px;
+    justify-content: center;
+    z-index: 300;
+
+    background: url('./media/fondocontenedor.png');
+    font-family: 'Rubik', sans-serif;
+    box-shadow: 5px 5px 0px 5px #000000;
+    color: #f1c711;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+.eljuegotexto{
+    color: black;
+}
+
+#resumen{
+    font-size: 1.5em;
+    font-weight: 700;
+    color: black;
+}
+
+#puntaje{
+    font-size: 3em;
+    font-weight: 700;
+    color: #29f678;
+}
+#pregunta{
+    font-size: 1em;
+    font-weight: 700;
+    color: #f62929;
+}
+
+#incorrecta{
+    font-weight: 700;
+    font-size: 1em;
+    color: #f62929;
+}
+#correcta{
     font-weight: 700;
     font-size: 2em;
-    color: #f62929;
+    color: #f1c711;
 }
 
 #Luciano{
