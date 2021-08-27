@@ -26,7 +26,8 @@ urlpatterns = [
     path('lobby/', v.lobby, name='lobby'),
     path('register/', v.register, name='register'),
     path('us/', v.us, name='us'),
-    path('game/', v.game, name='game')
+    path('game/', v.game, name='game'),
+    path('ranking/', v.ranking, name='ranking')
     
     #---------------------------------------------
     #posts de formularios

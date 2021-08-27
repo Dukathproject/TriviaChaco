@@ -64,6 +64,11 @@ def game(request):
         return render(request, "login.html", {'form': form, 'alert': 'Para jugar debe iniciar sesión.'})
 
 
+#RANKING-------------------------------------------------------------------    
+def ranking(request):
+    return render(request, "ranking.html")
+
+
 #LOG OUT-------------------------------------------------------------------    
 def user_logout(request):
     logout(request)
