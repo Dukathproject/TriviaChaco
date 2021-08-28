@@ -31,7 +31,7 @@
                         <p class="alturaBoton">
                             <input class="boton" id="botón2" onclick="selección(2)" type="button" name="respuesta_2" value="" />
                         </p>
-                        <p class="alturaBoton">
+                        <p id="b3" class="alturaBoton">
                             <input class="boton" id="botón3" onclick="selección(3)" type="button" name="respuesta_3" value="" />
                         </p>
                     </div>
@@ -43,17 +43,8 @@
             </form>    
         </div>    
         <div class="principalPartida">
-            <div class="partidaStats">
-                <div class="textsalto">
-                    <p id="congrats"></p>
-                </div>
-            </div>
+                <img id="congrats"src="{% static 'media/OMG.png' %}">
         </div>        
-        <footer class="footer">
-            <nav class="pie">
-                <a href="#">Desarrollado por Grupo 7</a>
-            </nav>
-        </footer>
     </div>
     <script src="{% static 'game.js' %}" crossorigin="anonymous"></script>
 </body>

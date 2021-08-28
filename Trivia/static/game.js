@@ -32,6 +32,12 @@ function sigPregunta(){
         botón.value = question_parsed['question_' + nPregunta]['respuestas'][cont]['respuesta_' + (i)]['formula'];
         cont++;
     };
+    var boton3 = document.getElementById('b3');
+    if(question_parsed['question_' + nPregunta]['respuestas'][2]){
+        boton3.style.display= "Block";
+    }else{
+        boton3.style.display= "None";
+    }
     cont = 0;
 }
 
@@ -42,14 +48,37 @@ setInterval(function(){
         timer.textContent = 'Tiempo restante: ' + time;
     }else {
         timer.textContent = 'Tiempo agotado. ¡FIN DE LA PARTIDA!';
+        setTimeout(function(){
+            //GUARDAR VALOR TOTAL
+        result.value = puntaje;
+        //GUARDAR VALOR PREGUNTA
+        pregunta.value = questionFormula.textContent;
+        //GUARDAR VALOR DE RESPUESTA CORRECTA
+        for(var i = 1; i <= 3; i++){
+            var correct_answer = question_parsed['question_' + nPregunta]['respuestas'][i-1];
+            if(correct_answer['respuesta_' + i]['correcta'] === true){
+                correct.value = correct_answer['respuesta_' + i]['formula'];
+            }
+        }
+        //GUARDAR VALOR DE RESPUESTA INCORRECTA
+        incorrect.value = "-"
+        document.getElementById("result").submit();
+        //FINALIZAR EL JUEGO
+            }, 1000);
     }
 }, 1000);
 
 
-function congratsText(){
-    congrats.textContent = "¡MUY BIEN!";
+// function congratsText(){
+//     congrats.textContent = "¡MUY BIEN!";
+//     setTimeout(function(){
+//         congrats.textContent = "";;
+//         }, 3000);
+// }
+function congratsDisplay(){
+    congrats.style.display = "Block";
     setTimeout(function(){
-        congrats.textContent = "";;
+        congrats.style.display = "None";
         }, 3000);
 }
 
@@ -60,7 +89,8 @@ function selección(boton) {
         puntaje++;
         nPregunta++;
         time = 15;
-        congratsText();  
+        // congratsText();  
+        congratsDisplay();  
         sigPregunta();
     }else{
         //GUARDAR VALOR TOTAL

@@ -33,13 +33,14 @@ def questions():
         #según las preguntas al azar tomadas se filtran las respectivas respuestas y se agregan a questions_list
         resp_cont = 0
         for respuesta in r:
-            if respuesta['pregunta_id'] == randNum+1:
+            if respuesta['pregunta_id'] == questions_list['question_' + str(i+1)]['id']:
                 resp_cont = resp_cont + 1
                 questions_list['question_' + str(i+1)]['respuestas'].append({'respuesta_' + str(resp_cont): {
                     "formula": respuesta['formula'],
                     "correcta": respuesta['correcta']
                     }})
         del p[randNum]
+        randNum+1
     return questions_list
 
 #registrar usuario----------------------------------
@@ -85,14 +86,11 @@ def user_login(request):
 #obtener ranking----------------------------------      
 def ranking_get():
     rank = Ranking.objects.raw('SELECT id, MAX(aciertos), usuario_id, fecha, pregunta, correcta, incorrecta FROM trivia_ranking GROUP BY usuario_id;')
-    print(rank)
     return rank
 
 #obtener partidas del ranking----------------------------------      
 def historial_get(partida_id):
     part = Ranking.objects.filter(id=partida_id)
     partida = list(part)
-    print(type(partida))
-    print(partida[0].pregunta)
     result = {'points': partida[0].aciertos, 'pregunta': partida[0].pregunta, 'correcta': partida[0].correcta, 'incorrecta': partida[0].incorrecta, 'fecha': partida[0].fecha}
     return result

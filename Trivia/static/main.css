@@ -24,281 +24,281 @@ a{
     display: flex;
     flex-flow: column nowrap;
 }    
-    .header {
-        display: flex;
-        flex-flow: column nowrap;
-        margin-bottom: 10px;
-        padding: 0;
-        z-index: 150;
-    }
-        .menu{
-            background: rgb(0, 0, 0, 1);
-            display: flex;
-            flex-flow: row nowrap;
-            height: 50%;
-            width: 50;
-            align-items: center;
-            font-family: 'Rubik', sans-serif;
-            border-bottom: 1px solid rgba(255, 255, 255, .5);
-            padding: 0;
-            
-        }
-            .logo{
-                height: 100%;
-                flex:1 1 auto;
-                
-            }
-                .logo img{
-                    width: 20%;
-                }
+.header {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 10px;
+    padding: 0;
+    z-index: 150;
+}
+.menu{
+    background: rgb(0, 0, 0, 1);
+    display: flex;
+    flex-flow: row nowrap;
+    height: 50%;
+    width: 50;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    padding: 0;
+    
+}
+.logo{
+    height: 100%;
+    flex:1 1 auto;
+    
+}
+.logo img{
+    width: 20%;
+}
                                               
-            .nav {
-                flex:4 1 auto;
-            }
-                .nav a{
-                    color: #f9dc5c;
-                    font-size: 11px;
-                    text-transform: uppercase;
-                    padding: 0 10px;
-                    letter-spacing: 2px;
-                }
-                .nav a:hover{
-                    color: #fff;
-                }
-            .social {
-                flex:1 1 auto;
-            }
-                .social a{
-                    font-size: 30px;
-                    color: #f9dc5c;
-                    padding: 0 5px;
-                }
-                .social a:hover{
-                    color: #fff;
-                }
-    .backgroundimage{
-        animation: rotate 300s linear infinite;
-        background: url('./media/fondoaltavoz.png') no-repeat center;
-        position: fixed;
-        display: block;
-        height: 500vh;
-        width: 500vh;
-        z-index: 0;
-        top: -200%;
-        left: -95%;
-    }            
-    .principal { 
-        background-color: #f9dc5c00;
-        display: flex;
-        width: 90%;
-        height: 80%;
-        margin: auto;
-        margin-bottom: 0;
-        border: 1px #2D2B1F;
-        border-radius: 5px;
-        justify-content: center;
-        z-index: 100;
-        overflow: hidden;
-        
-    }
-    .principalPartida { 
-        background-color: #f9dc5c00;
-        display: block;
-        width: 90%;
-        height: 80%;
-        margin: auto;
-        margin-bottom: 0;
-        border: 1px #2D2B1F;
-        border-radius: 5px;
-        justify-content: center;
-        z-index: 100;
-        overflow: hidden;
-        
-    }
-
-    .respuestas {
-        display: block;
-        justify-content: center;
-    }
+.nav {
+    flex:4 1 auto;
+}
+.nav a{
+    color: #f9dc5c;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 0 10px;
+    letter-spacing: 2px;
+}
+.nav a:hover{
+    color: #fff;
+}
+.social {
+    flex:1 1 auto;
+}
+.social a{
+    font-size: 30px;
+    color: #f9dc5c;
+    padding: 0 5px;
+}
+.social a:hover{
+    color: #fff;
+}
+.backgroundimage{
+    animation: rotate 300s linear infinite;
+    background: url('./media/fondoaltavoz.png') no-repeat center;
+    position: fixed;
+    display: block;
+    height: 500vh;
+    width: 500vh;
+    z-index: 0;
+    top: -200%;
+    left: -95%;
+}            
+.principal { 
+    background-color: #f9dc5c00;
+    display: flex;
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    margin-bottom: 0;
+    border: 1px #2D2B1F;
+    border-radius: 5px;
+    justify-content: center;
+    z-index: 100;
+    overflow: hidden;
     
-    .columna1{
-        width: 500px;
-        text-align: center;
-    }
+}
+.principalPartida { 
+    background-color: #f9dc5c00;
+    display: block;
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    margin-bottom: 0;
+    border: 1px #2D2B1F;
+    border-radius: 5px;
+    justify-content: center;
+    z-index: 100;
+    overflow: hidden;
     
-    .columna2{
-        width: 500px;
-        text-align: left;
+}
+
+.respuestas {
+    display: block;
+    justify-content: center;
+}
+    
+.columna1{
+    width: 500px;
+    text-align: center;
+}
+    
+.columna2{
+    width: 500px;
+    text-align: left;
+}
+
+.alturaBoton {
+    height: 60px;
+    align-items: center;
+    padding: 0;
+}
+
+@keyframes rotate {
+    to{ transform: rotate(360deg); }
     }
 
-    .alturaBoton {
-        height: 60px;
-        align-items: center;
-        padding: 0;
-    }
+.logogrande{
+    flex:1 1 50%;
+    margin: auto;
+    z-index: 100;
+}
+.logogrande img{
+    width: 100%;                
+}
+.Bienvenida{
+    background: url('./media/fondocontenedor.png');
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    box-shadow: 5px 5px 0px 5px #000000;
+    color: #f1c711;
+    width: 30%;
+    margin-right: 200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    z-index: 100;
+}
+.Bienvenida h1{
+    font-size: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-shadow: 5px 5px 0px 5px #000000;
+    
+}
+.boton{
+    background: #333333;
+    display: flex;
+    flex: row;
+    justify-content: center;
+    color: #fff;
+    text-transform: uppercase;
+    border-width: 0;
+    border-radius: 10px;
+    width: 100%;
+    z-index: 3000;
+}
+.boton:hover{
+    font-weight: 700;
+    background: #f1c711;
+    color: #fff;
+}
+.Bienvenida p{
+    margin-top: 20px;
+    color: #2D2B1F;
+    font-size: 20px;
+}
+.tituloequipo{
+    color: #fff;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: large;
 
-    @keyframes rotate {
-        to{ transform: rotate(360deg); }
-      }
-
-        .logogrande{
-            flex:1 1 50%;
-            margin: auto;
-            z-index: 100;
-        }
-            .logogrande img{
-                width: 100%;                
+}
+.equipo{
+    display: flex;
+}   
+    
+.textoDesc{
+    background: url('./media/fondocontenedor.png');
+    border-radius: 15px;
+    border: #f9dc5c 1px solid;
+    font-family: 'Roboto', sans-serif;
+}
+.contenedor{
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 5px;                
+    margin-right: 5px;                
+}
+div.avatar {
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    width: 250px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    background-size: 100% auto;
+}
+.formulario{
+    background: url('./media/fondocontenedor.png');
+    background-color: rgba(255, 255, 255);
+    width: 100%;
+    justify-content: right;
+    align-items:flex-start;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 15px;
+}
+.partidaStats{
+    background: url('./media/fondocontenedor.png');
+    background-color: rgba(255, 255, 255);
+    width: 100%;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 15px;
+}
+.signup{
+    border-radius: 10px;
+    border: #929292 solid 1px;
+    color: #f1c711;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    /* text-shadow: 1px 2px 2px #333333; */
+    margin: auto;
+    margin-bottom: 10px;
+} 
+.signup h2{
+    font-size: 30px;
+}
+.form-holder{
+    margin-bottom: 10px;
             }
-        .Bienvenida{
-            background: url('./media/fondocontenedor.png');
-            text-align: center;
-            font-family: 'Rubik', sans-serif;
-            box-shadow: 5px 5px 0px 5px #000000;
-            color: #f1c711;
-            width: 30%;
-            margin-right: 200px;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            border-radius: 10px;
-            z-index: 100;
-            }
-            .Bienvenida h1{
-                font-size: 50px;
-                margin-top: 50px;
-                margin-bottom: 50px;
-                text-shadow: 5px 5px 0px 5px #000000;
+.input{
+    background: #ffffe4;
+    width: 80%;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #f9dc5c;
+}
+.textsalto{
+    font-size: 20px;
+    text-align: center;
+    color: #f1c711;
+    /* text-shadow: 1px 2px 2px #333333; */
+}
+.textsalto img{
+    width: 20%;
+}
+.botonera{
+    display: flex;
+    justify-content: center;
+}
+                            
                 
-            }
-            .boton{
-                background: #333333;
-                display: flex;
-                flex: row;
-                justify-content: center;
-                color: #fff;
-                text-transform: uppercase;
-                border-width: 0;
-                border-radius: 10px;
-                width: 100%;
-                z-index: 3000;
-            }
-            .boton:hover{
-                font-weight: 700;
-                background: #f1c711;
-                color: #fff;
-            }
-            .Bienvenida p{
-                margin-top: 20px;
-                color: #2D2B1F;
-                font-size: 20px;
-            }
-        .tituloequipo{
-            color: #fff;
-            text-align: center;
-            font-family: 'Rubik', sans-serif;
-            font-size: large;
-
-        }
-        .equipo{
-            display: flex;
-        }   
-        
-        .textoDesc{
-            background: url('./media/fondocontenedor.png');
-            border-radius: 15px;
-            border: #f9dc5c 1px solid;
-            font-family: 'Roboto', sans-serif;
-        }
-            .contenedor{
-                justify-content: center;
-                flex-direction: row;
-                margin-left: 5px;                
-                margin-right: 5px;                
-            }
-                div.avatar {
-                            margin-bottom: 20px;
-                            margin-left: auto;
-                            margin-right: auto;
-                            height: 250px;
-                            width: 250px;
-                            background-repeat: no-repeat;
-                            background-position: center;
-                            border-radius: 50%;
-                            background-size: 100% auto;
-                        }
-        .formulario{
-            background: url('./media/fondocontenedor.png');
-            background-color: rgba(255, 255, 255);
-            width: 100%;
-            justify-content: right;
-            align-items:flex-start;
-            font-family: 'Rubik', sans-serif;
-            border-radius: 15px;
-        }
-        .partidaStats{
-            background: url('./media/fondocontenedor.png');
-            background-color: rgba(255, 255, 255);
-            width: 100%;
-            font-family: 'Rubik', sans-serif;
-            border-radius: 15px;
-        }
-            .signup{
-                border-radius: 10px;
-                border: #929292 solid 1px;
-                color: #f1c711;
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                /* text-shadow: 1px 2px 2px #333333; */
-                margin: auto;
-                margin-bottom: 10px;
-                } 
-                .signup h2{
-                    font-size: 30px;
-                }
-                .form-holder{
-                    margin-bottom: 10px;
-                            }
-                .input{
-                    background: #ffffe4;
-                    width: 80%;
-                    margin: 5px;
-                    border-radius: 5px;
-                    border: 1px solid #f9dc5c;
-                }
-                    .textsalto{
-                        font-size: 20px;
-                        text-align: center;
-                        color: #f1c711;
-                        /* text-shadow: 1px 2px 2px #333333; */
-                    }
-                        .textsalto img{
-                            width: 20%;
-                        }
-        .botonera{
-            display: flex;
-            justify-content: center;
-        }
-                               
-                    
-    .footer{
-        background-color: #000;
-        display: flex;
-        font-family: 'Rubik', sans-serif;
-        width: 100%;
-        border-radius: 10px;
-        justify-content: center;
-        z-index: 140;
-    }
-        .pie{
-            
-            width: 300px;
-            
-        }
-            .pie a{
-                text-decoration: none;
-                color: #fff;
-            }
+.footer{
+    background-color: #000;
+    display: flex;
+    font-family: 'Rubik', sans-serif;
+    width: 100%;
+    border-radius: 10px;
+    justify-content: center;
+    z-index: 140;
+}
+.pie{
+    
+    width: 300px;
+    
+}
+.pie a{
+    text-decoration: none;
+    color: #fff;
+}
 
 .stats{
     color: black;
@@ -328,6 +328,18 @@ a{
     color: black;
 }
 
+#timer{
+    font-size: 2em;
+    color: #f62929;
+}
+
+#congrats{
+    justify-content: center;
+    display: none;
+    z-index: 300;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #resumen{
     font-size: 1.5em;

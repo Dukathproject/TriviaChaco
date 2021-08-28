@@ -1,4 +1,5 @@
 {% include 'header.html' %}
+
 {% load static %}
                 <link rel="stylesheet" href="{% static 'ranking.css'%}">
                 <div class="social">
@@ -25,19 +26,21 @@
                             <div class="lboard_item today" style="display: none;">
                                 {% for ranking in rank %}
                                 <div class="lboard_mem">
+                                    <p>{{ forloop.counter }}</p>
                                     <div class="img">
-                                        <img src="{% static 'media/Luciano Gusberti.jpg' %}">
+                                        <img src="{% static 'media/OMG.png' %}">
                                     </div>
                                     <div class="name_bar">
-                                        <p><span>1.</span> {{ ranking.usuario }}</p>
-                                        <div class="bar_wrap">
+                                        
+                                        <p>{{ ranking.usuario }}</p>
+                                        <!-- <div class="bar_wrap">
                                             <div class="inner_bar" style="width: 95%"></div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="points">
                                         {{ ranking.aciertos }}
                                     </div>
-                                    <div class="points">
+                                    <div class="date">
                                         {{ ranking.fecha }}
                                     </div>
                                 </div>
