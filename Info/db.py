@@ -3,12 +3,12 @@ from Trivia.forms import RegisterForm, LoginForm, RankingForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db import models
+from django.db.models import Count
 from Trivia.models import Config_Partida, Pregunta, Respuesta, Ranking
 import random
 
 
-#----------------------------------
-#Consultas del juego
+#Consultas del juego----------------------------------
 def questions():
     #consulta todas las preguntas
     p_queryset = Pregunta.objects.all().values()
@@ -23,7 +23,7 @@ def questions():
     for i in range(len(p_queryset)):
         #numero al azar segun cantidad de preguntas totales
         randNum = random.randint(0,len(p)-1)
-        #de las preguntas consultadas, se toman 5 al azar y se guarda 
+        #se guardan todas las preguntas en orden aleatorio en questions_list 
         questions_list['question_' + str(i+1)] = {
             "id": p[randNum]['id'],
             "formula": p[randNum]['formula'],
@@ -42,8 +42,7 @@ def questions():
         del p[randNum]
     return questions_list
 
-
-#funcion para consultar si existe usuario en db, si no existe lo agrega
+#registrar usuario----------------------------------
 def register_post(request):
     # create a form instance and populate it with data from the request:
     form = RegisterForm(request.POST)
@@ -58,19 +57,20 @@ def register_post(request):
             return msg
         msg = [False, "Usuario ya existente, ingrese otro nombre de usuario."]
         return msg
-            
+  
+#registrar partida----------------------------------      
 def ranking_post(request):
     form = RankingForm(request.POST)
     if form.is_valid():
         form_data = form.cleaned_data
         user = User.objects.get(id=request.user.id)
-        result = Ranking(usuario=user, aciertos=form_data['result'])
+        result = Ranking(usuario=user, aciertos=form_data['result'], pregunta=form_data['pregunta'], correcta=form_data['correcta'], incorrecta=form_data['incorrecta'])
         result.save()
+        #CAMBIAR CODIGO POR CONSULTA AL IMPLEMENTAR EL RESULT
         result = {'points': form_data['result'], 'pregunta': form_data['pregunta'], 'correcta': form_data['correcta'], 'incorrecta': form_data['incorrecta']}
         return result
     
-        
- 
+#loguear usuario----------------------------------      
 def user_login(request):
     form = LoginForm(request.POST)
     if form.is_valid():
@@ -81,3 +81,18 @@ def user_login(request):
             # A backend authenticated the credentials
         # else:
             # No backend authenticated the credentials
+            
+#obtener ranking----------------------------------      
+def ranking_get():
+    rank = Ranking.objects.raw('SELECT id, MAX(aciertos), usuario_id, fecha, pregunta, correcta, incorrecta FROM trivia_ranking GROUP BY usuario_id;')
+    print(rank)
+    return rank
+
+#obtener partidas del ranking----------------------------------      
+def historial_get(partida_id):
+    part = Ranking.objects.filter(id=partida_id)
+    partida = list(part)
+    print(type(partida))
+    print(partida[0].pregunta)
+    result = {'points': partida[0].aciertos, 'pregunta': partida[0].pregunta, 'correcta': partida[0].correcta, 'incorrecta': partida[0].incorrecta, 'fecha': partida[0].fecha}
+    return result

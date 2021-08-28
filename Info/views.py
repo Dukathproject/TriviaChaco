@@ -3,14 +3,17 @@
 from django.shortcuts import render, redirect
 from MySQLdb import _mysql
 from Trivia.forms import RegisterForm, LoginForm, RankingForm
-from .db import register_post, user_login, questions, ranking_post
+from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get
 from django.contrib.auth import logout
 import json
 
 
 #INDEX-------------------------------------------------------------------------
 def index(request):
-    return render(request, "index.html")
+    if request.user.is_authenticated:
+        return render(request, "lobby.html")
+    else:
+        return render(request, "index.html")
 
 
 #REGISTER USER-----------------------------------------------------------------
@@ -66,7 +69,8 @@ def game(request):
 
 #RANKING-------------------------------------------------------------------    
 def ranking(request):
-    return render(request, "ranking.html")
+    rank = ranking_get()
+    return render(request, "ranking.html", {'rank': rank})
 
 
 #LOG OUT-------------------------------------------------------------------    
@@ -78,3 +82,9 @@ def user_logout(request):
 #US----------------------------------------------------------------------------
 def us(request):
     return render(request, "us.html")
+
+
+#HISTORIAL---------------------------------------------------------------------
+def historial(request, partida_id):
+    result = historial_get(partida_id)
+    return render(request, "result.html", {'result': result})

@@ -27,9 +27,11 @@ urlpatterns = [
     path('register/', v.register, name='register'),
     path('us/', v.us, name='us'),
     path('game/', v.game, name='game'),
-    path('ranking/', v.ranking, name='ranking')
+    path('ranking/', v.ranking, name='ranking'),
+    path('<int:partida_id>/', v.historial, name='historial')
     
     #---------------------------------------------
     #posts de formularios
     #registro
 ]
+
