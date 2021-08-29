@@ -68,8 +68,10 @@ def ranking_post(request):
         result = Ranking(usuario=user, aciertos=form_data['result'], pregunta=form_data['pregunta'], correcta=form_data['correcta'], incorrecta=form_data['incorrecta'])
         result.save()
         #CAMBIAR CODIGO POR CONSULTA AL IMPLEMENTAR EL RESULT
-        result = {'points': form_data['result'], 'pregunta': form_data['pregunta'], 'correcta': form_data['correcta'], 'incorrecta': form_data['incorrecta']}
-        return result
+        part = Ranking.objects.latest('id')
+        partida_id = part.id
+        # result = {'points': form_data['result'], 'pregunta': form_data['pregunta'], 'correcta': form_data['correcta'], 'incorrecta': form_data['incorrecta']}
+        return partida_id
     
 #loguear usuario----------------------------------      
 def user_login(request):
@@ -85,10 +87,10 @@ def user_login(request):
             
 #obtener ranking----------------------------------      
 def ranking_get():
-    rank = Ranking.objects.raw('SELECT id, MAX(aciertos), usuario_id, fecha, pregunta, correcta, incorrecta FROM trivia_ranking GROUP BY usuario_id;')
+    rank = Ranking.objects.raw('SELECT id, MAX(aciertos) as maximo, usuario_id, fecha, pregunta, correcta, incorrecta FROM trivia_ranking GROUP BY usuario_id ORDER BY maximo DESC;')
     return rank
 
-#obtener partidas del ranking----------------------------------      
+#obtener partidas del ranking para mostrar url de partidas espec{----------------------------------      
 def historial_get(partida_id):
     part = Ranking.objects.filter(id=partida_id)
     partida = list(part)

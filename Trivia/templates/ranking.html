@@ -12,21 +12,35 @@
                 <div class="wrapper">
                     <div class="lboard_section">
                         <h1>Ranking</h1>
-                        <div class="lboard_tabs">
+                        <!-- <div class="lboard_tabs">
                             <div class="tabs">
                                 <ul>
-                                    <li data-li="today">Hoy</li>
-                                    <li class="active" data-li="month">Mes</li>
+                                    <li class="active" data-li="today">Hoy</li>
+                                    <li data-li="month">Mes</li>
                                     <li data-li="year">Año</li>
                                 </ul>
                             </div>
-                        </div>
-                
-                        <div class="lboard_wrap">
-                            <div class="lboard_item today" style="display: none;">
+                        </div> -->
+                        
+                        <div class="partidaStats lboard_wrap">
+                            <div class="lboard_item today">
+                                <div id="tableHead" class="lboard_mem">
+                                    <p class="puesto">Puesto</p>
+                                    <div class="img">
+                                    </div>
+                                    <div class="name_bar">
+                                        <p>Jugador</p>
+                                    </div>
+                                    <div class="points">
+                                        Puntaje
+                                    </div>
+                                    <div class="date">
+                                        Fecha
+                                    </div>
+                                </div>
                                 {% for ranking in rank %}
                                 <div class="lboard_mem">
-                                    <p>{{ forloop.counter }}</p>
+                                    <p class="puesto">{{ forloop.counter }}</p>
                                     <div class="img">
                                         <img src="{% static 'media/OMG.png' %}">
                                     </div>
@@ -38,7 +52,7 @@
                                         </div> -->
                                     </div>
                                     <div class="points">
-                                        {{ ranking.aciertos }}
+                                        {{ ranking.maximo }}
                                     </div>
                                     <div class="date">
                                         {{ ranking.fecha }}
@@ -47,7 +61,7 @@
                                 {% endfor %}
                             </div>
 
-                            <div class="lboard_item month" style="display: block;">
+                            <!-- <div class="lboard_item month" style="display: block;">
                                 <div class="lboard_mem">
                                     <div class="img">
                                         <img src="{% static 'media/Luciano Gusberti.jpg' %}">
@@ -79,7 +93,7 @@
                                         2195 points
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
 
                         </div>
@@ -93,6 +107,6 @@
             </nav>
         </footer>
     </div>
-    <script src="{% static 'ranking.js' %}" crossorigin="anonymous"></script>  
+    <!-- <script src="{% static 'ranking.js' %}" crossorigin="anonymous"></script>   -->
 </body>
 </html>

@@ -54,14 +54,14 @@ def lobby(request):
   
 #THE GAME-------------------------------------------------------------------   
 def game(request):
-    if request.method == 'POST':
-        result = ranking_post(request)
-        if request.user.is_authenticated:
-            return render(request, "result.html", {'result': result})
     if request.user.is_authenticated:
-        questions_list = json.dumps(questions())
-        form = RankingForm()
-        return render(request, "game.html", {'question':questions_list, 'form': form})
+        if request.method == 'POST':
+            partida_id = ranking_post(request)
+            return redirect('/' + str(partida_id) + '/')
+        else:
+            questions_list = json.dumps(questions())
+            form = RankingForm()
+            return render(request, "game.html", {'question':questions_list, 'form': form})
     else:
         form = LoginForm()
         return render(request, "login.html", {'form': form, 'alert': 'Para jugar debe iniciar sesión.'})
