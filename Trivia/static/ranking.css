@@ -25,10 +25,16 @@
 
 .lboard_section{
     width: 700px;
-    margin: auto;
-    background: url('./media/fondocontenedor.png');                
+    margin: auto;                
     position: relative;
-    border-radius: 5px;
+    border-radius: 15px;
+}
+#rankingFondo{
+    background: url('./media/fondocontenedor.png');
+    background-color: rgba(255, 255, 255);
+    font-family: 'Rubik', sans-serif;
+    border-radius: 15px;
+    box-shadow: 5px 5px 0px 5px #000000;
 }
     .lboard_section h1{
         text-align: center;

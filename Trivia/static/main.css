@@ -207,6 +207,7 @@ a{
     border-radius: 15px;
     border: #f9dc5c 1px solid;
     font-family: 'Roboto', sans-serif;
+    box-shadow: 5px 5px 0px 5px #000000;
 }
 .contenedor{
     justify-content: center;
@@ -215,6 +216,7 @@ a{
     margin-right: 5px;                
 }
 div.avatar {
+    box-shadow: 5px 5px 0px 5px #000000;
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -233,6 +235,7 @@ div.avatar {
     align-items:flex-start;
     font-family: 'Rubik', sans-serif;
     border-radius: 15px;
+    box-shadow: 5px 5px 0px 5px #000000;
 }
 .partidaStats{
     background: url('./media/fondocontenedor.png');
@@ -240,6 +243,7 @@ div.avatar {
     width: 100%;
     font-family: 'Rubik', sans-serif;
     border-radius: 15px;
+    box-shadow: 5px 5px 0px 5px #000000;
 }
 .signup{
     border-radius: 10px;
@@ -369,16 +373,22 @@ div.avatar {
     color: #f1c711;
 }
 
-#Luciano{
-    background: url('.media/Luciano Gusberti.jpg');
-}
-
 #categoría{
     font-weight: 300;
 }
 
 #result{
     display: none;
+}
+
+#LucianoGusberti{
+    background-image: url('./media/Luciano Gusberti.jpg');
+}
+#DanteAcuña{
+    background-image: url('./media/DanteAcuña.jpg');
+}
+#CastilloJuan{
+    background-image: url('./media/CastilloJuan.jpg');
 }
 
 @media all and (max-width: 800px){
