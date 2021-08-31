@@ -119,8 +119,17 @@ a{
 .respuestas {
     display: block;
     justify-content: center;
+    font-size: 1em;
 }
-    
+.puesto{
+    background: #f1c711;
+    width: 5%;
+    height: 5%;
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    border-radius: 3em;
+    }    
 .columna1{
     width: 500px;
     text-align: center;
@@ -163,10 +172,11 @@ a{
     z-index: 100;
 }
 .Bienvenida h1{
-    font-size: 50px;
+    font-size: 2em;
     margin-top: 50px;
     margin-bottom: 50px;
     text-shadow: 5px 5px 0px 5px #000000;
+    
     
 }
 .boton{
@@ -240,7 +250,7 @@ div.avatar {
 .partidaStats{
     background: url('./media/fondocontenedor.png');
     background-color: rgba(255, 255, 255);
-    width: 100%;
+    width: auto;
     font-family: 'Rubik', sans-serif;
     border-radius: 15px;
     box-shadow: 5px 5px 0px 5px #000000;
@@ -333,8 +343,14 @@ div.avatar {
 }
 
 #timer{
-    font-size: 2em;
-    color: #f62929;
+    font-size: 1.5em;
+    background: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    
 }
 
 #congrats{
@@ -346,35 +362,53 @@ div.avatar {
 }
 
 #resumen{
-    font-size: 1.5em;
+    font-size: 3em;
     font-weight: 700;
-    color: black;
+    color: #f1c711;
 }
 
 #puntaje{
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 700;
-    color: #29f678;
+    background: #22c561;
+    color: white;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 #pregunta{
     font-size: 1em;
     font-weight: 700;
     color: #f62929;
 }
+#númeroPregunta{
+    font-weight: bold;
+    font-size: 1.25em;
+}
+#questionFormula{
+    font-weight: lighter;
+    font-size: 1.5em;
+}
 
 #incorrecta{
-    font-weight: 700;
+    font-weight: lighter;
     font-size: 1em;
     color: #f62929;
 }
 #correcta{
-    font-weight: 700;
-    font-size: 2em;
-    color: #f1c711;
+    font-weight:bolder;
+    font-size: 1em;
+    color: #22c561;;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #categoría{
-    font-weight: 300;
+    font-size: 1em;
+    color: hsl(143, 64%, 44%);
+    font-weight: bold
+
 }
 
 #result{
@@ -391,7 +425,7 @@ div.avatar {
     background-image: url('./media/CastilloJuan.jpg');
 }
 
-@media all and (max-width: 800px){
+@media all and (max-width: 1000px){
     .principal{
         flex-direction: column;
     }
@@ -399,9 +433,36 @@ div.avatar {
         flex-direction: column;
         height: 50%;
     }
-}
-@media all and (max-width: 600px){
     .Bienvenida{
+        width: 90%;
+    }
+    .Bienvenida h1{
+        font-size: 1.5em;
+    }
+}
+@media all and (max-width: 800px){
+    .menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .Bienvenida{
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        font-size: small;
+        text-align: center;
+    }
+}
+@media all and (max-width: 400px){
+    .logogrande{
+        width: 70%;
+    }
+    .social{
+        width: 80%;
+    }
+    .Bienvenida{
+        width: 90%;
         flex-direction: column;
         justify-content: center;
         font-size: small;

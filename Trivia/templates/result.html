@@ -3,7 +3,9 @@
         <div class="principalPartida">
             <div class="partidaStats">
                 <div class="textsalto">
-                    <p id="resumen">Resumen de la partida:</p>
+                    <p id="resumen">Resumen de la partida</p>
+                    <p id="correcta">Usuario: {{result.usuario}}</p>
+                    <p id="correcta">Fecha: {{result.fecha}}</p>
                     <p id="puntaje">Puntaje: {{result.points}}</p>
                     <p id="pregunta">Pregunta final: {{ result.pregunta}}</p>
                     <p id="incorrecta">Respuesta seleccionada: {{ result.incorrecta}}</p>
@@ -29,7 +31,7 @@
                     <div class="fb-share-button" 
                     data-href="https://www.facebook.com" 
                     data-layout="button_count">
-                    <a href="https://www.facebook.com/dialog/share?app_id=87741124305&href=http://127.0.0.1:8000/80/&display=popup"><i class="fas fa-chart-bar"></i>Compartir</a>
+                    <a href="https://www.facebook.com/dialog/share?app_id=87741124305&href=http://{{ request.build_absolute_uri }}&display=popup"><i class="fas fa-chart-bar"></i>Compartir</a>
                     </div>
                 </div>
             </div>

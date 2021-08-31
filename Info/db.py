@@ -70,29 +70,31 @@ def ranking_post(request):
         #CAMBIAR CODIGO POR CONSULTA AL IMPLEMENTAR EL RESULT
         part = Ranking.objects.latest('id')
         partida_id = part.id
-        # result = {'points': form_data['result'], 'pregunta': form_data['pregunta'], 'correcta': form_data['correcta'], 'incorrecta': form_data['incorrecta']}
         return partida_id
     
-#loguear usuario----------------------------------      
+#loguear usuario----------------------------------   
 def user_login(request):
     form = LoginForm(request.POST)
+    #si el formulario esta completo se autentifica con los datos ingresados
     if form.is_valid():
         form_data = form.cleaned_data
         user = authenticate(request, username=form_data['name'], password=form_data['password'])
         if user is not None:
+            #aqui se deja abierta la sesión
             login(request, user)
-            # A backend authenticated the credentials
-        # else:
-            # No backend authenticated the credentials
+            
             
 #obtener ranking----------------------------------      
 def ranking_get():
+    #se obtiene la lista completa de partidas y se ordena por puntaje, y se filtra para solo ver una por usuario
     rank = Ranking.objects.raw('SELECT id, MAX(aciertos) as maximo, usuario_id, fecha, pregunta, correcta, incorrecta FROM trivia_ranking GROUP BY usuario_id ORDER BY maximo DESC;')
     return rank
 
 #obtener partidas del ranking para mostrar url de partidas espec{----------------------------------      
 def historial_get(partida_id):
+    #se obtiene la partida a partir de la id ingresada
     part = Ranking.objects.filter(id=partida_id)
     partida = list(part)
-    result = {'points': partida[0].aciertos, 'pregunta': partida[0].pregunta, 'correcta': partida[0].correcta, 'incorrecta': partida[0].incorrecta, 'fecha': partida[0].fecha}
+    usuario = User.objects.filter(id=partida[0].usuario_id)
+    result = {'points': partida[0].aciertos, 'pregunta': partida[0].pregunta, 'correcta': partida[0].correcta, 'incorrecta': partida[0].incorrecta, 'fecha': partida[0].fecha, 'usuario': usuario[0]}
     return result
