@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from MySQLdb import _mysql
 from Trivia.forms import RegisterForm, LoginForm, RankingForm
-from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get
+from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get, own_historial_get
 from django.contrib.auth import logout
 import json
 
@@ -11,7 +11,8 @@ import json
 #INDEX-------------------------------------------------------------------------
 def index(request):
     if request.user.is_authenticated:
-        return render(request, "lobby.html")
+        historial = own_historial_get(request)
+        return render(request, "lobby.html", {'historial': historial})
     else:
         return render(request, "index.html")
 
@@ -36,7 +37,8 @@ def login(request):
     if request.method == 'POST':
         user_login(request)
         if request.user.is_authenticated:
-            return render(request, "lobby.html")
+            historial = own_historial_get(request)
+            return render(request, "lobby.html", {'historial': historial})
         else:
             form = LoginForm()
             return render(request, "login.html", {'form': form, 'alert': 'El usuario y/o contraseña no corresponden a alguien registrado.'})        
@@ -47,7 +49,8 @@ def login(request):
 #LOBBY-------------------------------------------------------------------------
 def lobby(request):
     if request.user.is_authenticated:
-        return render(request, "lobby.html")
+        historial = own_historial_get(request)
+        return render(request, "lobby.html", {'historial': historial})
     else:
         return render(request, "index.html") 
   

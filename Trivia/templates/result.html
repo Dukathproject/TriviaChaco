@@ -1,5 +1,8 @@
 {% include 'header.html' %}
 {% load static %}
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v11.0" nonce="kWC7SwRu"></script>
+
         <div class="principalPartida">
             <div class="partidaStats">
                 <div class="textsalto">
@@ -17,22 +20,10 @@
 
         <div class="principalPartida">
             <div class="partidaStats">
-                <div class="textsalto">
-                    <div id="fb-root"></div>
-                    <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "https://www.facebook.com";
-                    fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));</script>
-                    
-                    <!-- Your share button code -->
-                    <div class="fb-share-button" 
-                    data-href="https://www.facebook.com" 
-                    data-layout="button_count">
-                    <a href="https://www.facebook.com/dialog/share?app_id=87741124305&href=http://{{ request.build_absolute_uri }}&display=popup"><i class="fas fa-chart-bar"></i>Compartir</a>
-                    </div>
+                <div id="facebookButton"class="textsalto">
+                    <!-- COMPARTIR EN FACEBOOK -->
+                    <div class="fb-share-button" data-href="{{ request.build_absolute_uri }}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F{{ request.build_absolute_uri }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+
                 </div>
             </div>
         </div>       

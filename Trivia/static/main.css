@@ -170,7 +170,65 @@ a{
     margin-bottom: 50px;
     border-radius: 10px;
     z-index: 100;
+    height: 500px;
 }
+
+.historialDiv{
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    color: #f1c711;
+    width: 30%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 100px;
+    margin-right: 200px;
+    border-radius: 10px;
+    z-index: 100;
+    height: 500px;
+}
+
+.historialDiv h1{
+    color: white;
+}
+
+.scrollHist{
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    color: black;
+    width: 100%;
+    border-radius: 10px;
+    z-index: 100;
+    height: 400px;
+    scroll-behavior: auto;
+    scroll-behavior: smooth;
+    overflow-y: scroll;;
+}
+
+.scrollHist::-webkit-scrollbar {
+    display: none;
+}
+
+.historialPartidas{
+    background: url('./media/fondocontenedor.png');
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    box-shadow: 5px 5px 0px 5px #000000;
+    margin-bottom: 50px;
+    width: 100%;
+    border-radius: 10px;
+    z-index: 100;
+    display: flex;
+    justify-content:space-between;
+}
+
+.overflow{
+    overflow: hidden;
+}
+
+.historialAciertos{
+    font-weight: 700;
+}
+
 .Bienvenida h1{
     font-size: 2em;
     margin-top: 50px;
@@ -192,6 +250,22 @@ a{
     z-index: 3000;
 }
 .boton:hover{
+    font-weight: 700;
+    background: #f1c711;
+    color: #fff;
+}
+.botonVerMas{
+    background: #333333;
+    display: flex;
+    flex: row;
+    justify-content: center;
+    color: #fff;
+    text-transform: uppercase;
+    border-width: 0;
+    border-radius: 10px;
+    z-index: 3000;
+}
+.botonVerMas:hover{
     font-weight: 700;
     background: #f1c711;
     color: #fff;
@@ -423,6 +497,11 @@ div.avatar {
 }
 #CastilloJuan{
     background-image: url('./media/CastilloJuan.jpg');
+}
+
+#facebookButton{
+    height: 200px;
+    z-index: 1000;
 }
 
 @media all and (max-width: 1000px){

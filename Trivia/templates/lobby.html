@@ -1,12 +1,21 @@
 {% include 'header.html' %}
 {% load static %}
         <div class="principal">
-            <div class="logogrande">
-                <img src="{% static 'media/CHACO-TRIVIA.gif'%}" alt="Logo">
-            </div>
+
+            <div class="historialDiv">
+                <h1>Historial de partidas</h1>
+                <div class="scrollHist">
+                    {% for historia in historial %}
+                    <div class="historialPartidas">
+                        <p class="overflow historialFecha">{{ historia.fecha }}</p>
+                        <p class="overflow historialAciertos">Puntaje: {{ historia.aciertos }}</p>
+                        <a href="{% url 'historial' partida_id=historia.id %}" class="botonVerMas">Ver</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>    
             <div class="Bienvenida">
                 <h1>Bienvenidos a ChacoTrivia!</h1>
-                <p>{{ result }}</p>
                 <div class="botonera">
                     <a href="{% url 'game' %}" class="boton">Jugar!</a>
                 </div>

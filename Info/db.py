@@ -90,6 +90,13 @@ def ranking_get():
     rank = Ranking.objects.raw('SELECT id, MAX(aciertos) as maximo, usuario_id, fecha, pregunta, correcta, incorrecta FROM trivia_ranking GROUP BY usuario_id ORDER BY maximo DESC;')
     return rank
 
+#obtener ranking----------------------------------      
+def own_historial_get(request):
+    #se obtiene la lista completa de partidas propias y se ordena por fecha
+    sql = str(f'SELECT * from informatorio.trivia_ranking WHERE usuario_id={request.user.id} ORDER BY fecha DESC;')
+    historial = Ranking.objects.raw(sql)
+    return historial
+
 #obtener partidas del ranking para mostrar url de partidas espec{----------------------------------      
 def historial_get(partida_id):
     #se obtiene la partida a partir de la id ingresada
