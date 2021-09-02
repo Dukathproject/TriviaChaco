@@ -28,7 +28,8 @@ urlpatterns = [
     path('us/', v.us, name='us'),
     path('game/', v.game, name='game'),
     path('ranking/', v.ranking, name='ranking'),
-    path('<int:partida_id>/', v.historial, name='historial')
+    path('<int:partida_id>/', v.historial, name='historial'),
+    path('data/', v.data, name='data')
     
     #---------------------------------------------
     #posts de formularios

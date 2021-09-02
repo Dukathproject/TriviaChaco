@@ -1,0 +1,45 @@
+{% include 'header.html' %}
+{% load static %}
+<div class="data">
+    <script id="login_data" type="application/json">
+        {{ login_data|safe }}
+    </script>
+    
+    <canvas id="myChart" width="400" height="400"></canvas>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+//LINE CHART
+var ctx = document.getElementById('myChart').getContext('2d');
+var login_data_not_parsed = document.getElementById('login_data').textContent;
+var login_data = JSON.parse(login_data_not_parsed);
+ctx.canvas.parentNode.style.height = '400px';
+ctx.canvas.parentNode.style.width = '400px';
+ctx.canvas.parentNode.style.zIndex = 1001;
+
+
+var data = {
+  labels: login_data.labels,
+  datasets: [{
+    label: 'Inicios de sesión',
+    data: login_data.data,
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.1
+  }]
+};
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: data
+})
+
+</script>
+
+</div>
+</body>
+</html>

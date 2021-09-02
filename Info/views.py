@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from MySQLdb import _mysql
 from Trivia.forms import RegisterForm, LoginForm, RankingForm
-from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get, own_historial_get
+from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get, own_historial_get, login_data_get
 from django.contrib.auth import logout
 import json
 
@@ -91,3 +91,8 @@ def us(request):
 def historial(request, partida_id):
     result = historial_get(partida_id)
     return render(request, "result.html", {'result': result})
+
+#DATA---------------------------------------------------------------------
+def data(request):
+    login_data = json.dumps(login_data_get())
+    return render(request, "data.html",{'login_data': login_data})

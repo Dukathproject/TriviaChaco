@@ -516,6 +516,10 @@ div.avatar {
     z-index: 1000;
 }
 
+#myChart{
+    z-index: 1001;
+}
+
 @media all and (max-width: 1000px){
     .principal{
         flex-direction: column;

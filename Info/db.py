@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db import models
 from django.db.models import Count
-from Trivia.models import Config_Partida, Pregunta, Respuesta, Ranking
+from Trivia.models import Config_Partida, Pregunta, Respuesta, Ranking, UserLog
 import random
 
 
@@ -83,6 +83,10 @@ def user_login(request):
             #aqui se deja abierta la sesión
             login(request, user)
             
+            #registrar log de inicio de sesión
+            log = UserLog(usuario_id=request.user.id)
+            log.save()
+            
             
 #obtener ranking----------------------------------      
 def ranking_get():
@@ -105,3 +109,37 @@ def historial_get(partida_id):
     usuario = User.objects.filter(id=partida[0].usuario_id)
     result = {'points': partida[0].aciertos, 'pregunta': partida[0].pregunta, 'correcta': partida[0].correcta, 'incorrecta': partida[0].incorrecta, 'fecha': partida[0].fecha, 'usuario': usuario[0]}
     return result
+
+
+def login_data_get():           
+    ids = []
+    data = []
+    labels = []
+
+    queryset = UserLog.objects.all().values()
+    users = User.objects.all().values()
+    for each in queryset:
+        if each['usuario_id'] not in ids:
+            ids.append(each['usuario_id'])
+            for user in users:
+                if user['id'] == each['usuario_id']:
+                    labels.append(user['username'])
+                 
+    for id in ids:
+        count = 0
+        for each in queryset:
+            if id == each['usuario_id']:
+                count = count + 1
+        data.append(count)
+    
+    print(labels)
+    print(ids)
+    print(data)
+    
+    login_data = {
+        'ids': ids,
+        'labels': labels,
+        'data': data
+    }
+    
+    return login_data
