@@ -111,33 +111,18 @@ def historial_get(partida_id):
     return result
 
 
-def login_data_get():           
-    ids = []
+def login_data_get(): 
+    queryset = Ranking.objects.raw('SELECT id, DATE(fecha) as date, count(*) as logs FROM informatorio.trivia_userlog GROUP BY DATE(fecha);')
+
     data = []
     labels = []
 
-    queryset = UserLog.objects.all().values()
-    users = User.objects.all().values()
     for each in queryset:
-        if each['usuario_id'] not in ids:
-            ids.append(each['usuario_id'])
-            for user in users:
-                if user['id'] == each['usuario_id']:
-                    labels.append(user['username'])
-                 
-    for id in ids:
-        count = 0
-        for each in queryset:
-            if id == each['usuario_id']:
-                count = count + 1
-        data.append(count)
-    
-    print(labels)
-    print(ids)
-    print(data)
-    
+        data.append(each.logs)
+
+        labels.append(each.date.strftime("%Y-%m-%d"))
+        
     login_data = {
-        'ids': ids,
         'labels': labels,
         'data': data
     }

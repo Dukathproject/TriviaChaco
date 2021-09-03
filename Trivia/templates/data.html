@@ -1,14 +1,11 @@
 {% include 'header.html' %}
 {% load static %}
 <div class="data">
-    <script id="login_data" type="application/json">
-        {{ login_data|safe }}
-    </script>
-    
+  <div id="login_data">
+    {{ login_data }}
+  </div>
     <canvas id="myChart" width="400" height="400"></canvas>
 </div>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -21,6 +18,7 @@ ctx.canvas.parentNode.style.height = '400px';
 ctx.canvas.parentNode.style.width = '400px';
 ctx.canvas.parentNode.style.zIndex = 1001;
 
+console.log(login_data);
 
 var data = {
   labels: login_data.labels,

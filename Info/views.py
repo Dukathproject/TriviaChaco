@@ -5,6 +5,7 @@ from MySQLdb import _mysql
 from Trivia.forms import RegisterForm, LoginForm, RankingForm
 from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get, own_historial_get, login_data_get
 from django.contrib.auth import logout
+from django.http import JsonResponse
 import json
 
 
