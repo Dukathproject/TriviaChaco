@@ -19,6 +19,10 @@ a{
     text-decoration: none;
 }
 
+iframe{
+    padding: 0;
+}
+
 .padre{
     padding: 0;
     display: flex;
@@ -512,13 +516,34 @@ div.avatar {
 }
 
 #facebookButton{
-    height: 200px;
     z-index: 1000;
 }
 
 #myChart{
     z-index: 1001;
 }
+
+.shake {
+    animation: shake-animation 3s ease;
+    transform-origin: 50% 50%;
+  }
+  .element {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    background: red;
+  }
+  @keyframes shake-animation {
+     0% { transform:translate(0,0) }
+    1.78571% { transform:translate(60px,0) }
+    3.57143% { transform:translate(0,0) }
+    5.35714% { transform:translate(30px,0) }
+    7.14286% { transform:translate(0,0) }
+    8.92857% { transform:translate(12px,0) }
+    10.71429% { transform:translate(0,0) }
+    100% { transform:translate(0,0) }
+  }
+
 
 @media all and (max-width: 1000px){
     .principal{

@@ -77,8 +77,10 @@ setInterval(function(){
 // }
 function congratsDisplay(){
     congrats.style.display = "Block";
+    congrats.classList.add("shake");
     setTimeout(function(){
         congrats.style.display = "None";
+        congrats.classList.remove("shake");
         }, 3000);
 }
 
