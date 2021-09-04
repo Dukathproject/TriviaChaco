@@ -3,6 +3,7 @@ var result = document.getElementById("id_result");
 var correct = document.getElementById("id_correcta");
 var incorrect = document.getElementById("id_incorrecta");
 var pregunta = document.getElementById("id_pregunta");
+var pregunta_rel = document.getElementById("id_pregunta_rel");
 
 //OBTENER ELEMENTOS DEL HTML
 var question = document.getElementById("question").textContent;
@@ -53,6 +54,7 @@ setInterval(function(){
         result.value = puntaje;
         //GUARDAR VALOR PREGUNTA
         pregunta.value = questionFormula.textContent;
+        
         //GUARDAR VALOR DE RESPUESTA CORRECTA
         for(var i = 1; i <= 3; i++){
             var correct_answer = question_parsed['question_' + nPregunta]['respuestas'][i-1];
@@ -60,6 +62,9 @@ setInterval(function(){
                 correct.value = correct_answer['respuesta_' + i]['formula'];
             }
         }
+        //GUARDAR VALOR PREGUNTA_REL
+        pregunta_rel.value = question_parsed['question_' + nPregunta]['id'];
+
         //GUARDAR VALOR DE RESPUESTA INCORRECTA
         incorrect.value = "-"
         document.getElementById("result").submit();
@@ -68,13 +73,6 @@ setInterval(function(){
     }
 }, 1000);
 
-
-// function congratsText(){
-//     congrats.textContent = "¡MUY BIEN!";
-//     setTimeout(function(){
-//         congrats.textContent = "";;
-//         }, 3000);
-// }
 function congratsDisplay(){
     congrats.style.display = "Block";
     congrats.classList.add("shake");
@@ -106,6 +104,10 @@ function selección(boton) {
                 correct.value = correct_answer['respuesta_' + i]['formula'];
             }
         }
+
+        //GUARDAR VALOR PREGUNTA_REL
+        pregunta_rel.value = question_parsed['question_' + nPregunta]['id'];
+
         //GUARDAR VALOR DE RESPUESTA INCORRECTA
         incorrect.value = question_parsed['question_' + nPregunta]['respuestas'][boton-1]['respuesta_' + boton]['formula'];
         document.getElementById("result").submit();

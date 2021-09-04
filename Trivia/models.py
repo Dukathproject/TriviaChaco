@@ -35,6 +35,7 @@ class Respuesta(models.Model):
     
 class Ranking(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    pregunta_rel = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
     aciertos = models.IntegerField()
     fecha = models.DateTimeField(auto_now_add=True)
     pregunta = models.CharField(max_length=200)

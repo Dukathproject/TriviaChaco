@@ -1,39 +1,100 @@
 {% include 'header.html' %}
 {% load static %}
+<style>
+  .charts{
+    width:600px;
+  }
+
+  .data{
+    z-index: 1000;
+  }
+</style>
 <div class="data">
   <div id="login_data">
     {{ login_data }}
   </div>
-    <canvas id="myChart" width="400" height="400"></canvas>
+
+  <div id="category_data">
+    {{ category_data }}
+  </div>
+
+  <div class="charts">
+    <canvas id="loginChart"></canvas>
+  </div>
+  <div class="charts">
+    <canvas id="categoryChart"></canvas>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 //LINE CHART
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('loginChart').getContext('2d');
 var login_data_not_parsed = document.getElementById('login_data').textContent;
 var login_data = JSON.parse(login_data_not_parsed);
-ctx.canvas.parentNode.style.height = '400px';
-ctx.canvas.parentNode.style.width = '400px';
 ctx.canvas.parentNode.style.zIndex = 1001;
-
-console.log(login_data);
 
 var data = {
   labels: login_data.labels,
   datasets: [{
     label: 'Inicios de sesión',
     data: login_data.data,
-    fill: false,
-    borderColor: 'rgb(75, 192, 192)',
-    tension: 0.1
+    fill: true,
+    borderColor: '#f62929',
+    tension: 0.5
   }]
 };
 
 var myChart = new Chart(ctx, {
     type: 'line',
-    data: data
+    data: data,
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Inicios de sesión por día'
+            }
+        }
+    }
+})
+
+//PIE CHART
+var ctx = document.getElementById('categoryChart').getContext('2d');
+var category_data_not_parsed = document.getElementById('category_data').textContent;
+var category_data = JSON.parse(category_data_not_parsed);
+ctx.canvas.parentNode.style.zIndex = 1001;
+
+var data = {
+  labels: category_data.labels,
+  datasets: [{
+    label: 'En que categoría se pierde más',
+    data: category_data.data,
+    borderColor: '#f62929',
+    backgroundColor: [
+      'Red',
+      'Blue',
+      'Yellow',
+      'White',
+      'Green',
+      'Brown',
+      'Orange'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'En que categorías se pierde más'
+            }
+        }
+    }
 })
 
 </script>

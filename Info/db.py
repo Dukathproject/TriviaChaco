@@ -51,13 +51,12 @@ def register_post(request):
     if form.is_valid():
         form_data = form.cleaned_data
         try:
-            check = User.objects.get(username=form_data['name'])
-        except:
-            user = User.objects.create_user(form_data['name'], form_data['email'], form_data['password'])
+            User.objects.create_user(form_data['name'], form_data['email'], form_data['password'])
             msg = [True, "Usuario creado de forma exitosa!"]
             return msg
-        msg = [False, "Usuario ya existente, ingrese otro nombre de usuario."]
-        return msg
+        except:
+            msg = [False, "Usuario ya existente, ingrese otro nombre de usuario."]
+            return msg
   
 #registrar partida----------------------------------      
 def ranking_post(request):
@@ -65,8 +64,10 @@ def ranking_post(request):
     if form.is_valid():
         form_data = form.cleaned_data
         user = User.objects.get(id=request.user.id)
-        result = Ranking(usuario=user, aciertos=form_data['result'], pregunta=form_data['pregunta'], correcta=form_data['correcta'], incorrecta=form_data['incorrecta'])
+        pregunta_rel = Pregunta.objects.get(id = form_data['pregunta_rel'])
+        result = Ranking(usuario=user, aciertos=form_data['result'], pregunta=form_data['pregunta'], correcta=form_data['correcta'], incorrecta=form_data['incorrecta'], pregunta_rel=pregunta_rel)
         result.save()
+        print(pregunta_rel)
         #CAMBIAR CODIGO POR CONSULTA AL IMPLEMENTAR EL RESULT
         part = Ranking.objects.latest('id')
         partida_id = part.id
@@ -96,7 +97,7 @@ def ranking_get():
 
 #obtener ranking----------------------------------      
 def own_historial_get(request):
-    #se obtiene la lista completa de partidas propias y se ordena por fecha
+    #se obtiene la lista completa de partidas propias y se ordena por fecha 
     sql = str(f'SELECT * from informatorio.trivia_ranking WHERE usuario_id={request.user.id} ORDER BY fecha DESC;')
     historial = Ranking.objects.raw(sql)
     return historial
@@ -110,21 +111,37 @@ def historial_get(partida_id):
     result = {'points': partida[0].aciertos, 'pregunta': partida[0].pregunta, 'correcta': partida[0].correcta, 'incorrecta': partida[0].incorrecta, 'fecha': partida[0].fecha, 'usuario': usuario[0]}
     return result
 
-
+#obtener cantidad de veces que se inició sesión
 def login_data_get(): 
     queryset = Ranking.objects.raw('SELECT id, DATE(fecha) as date, count(*) as logs FROM informatorio.trivia_userlog GROUP BY DATE(fecha);')
-
     data = []
     labels = []
-
     for each in queryset:
         data.append(each.logs)
-
         labels.append(each.date.strftime("%Y-%m-%d"))
-        
     login_data = {
         'labels': labels,
         'data': data
     }
-    
     return login_data
+
+#obtener cantidad de partidas perdidas según categoría de pregunta
+def category_data_get(): 
+    matches_queryset = Ranking.objects.all()
+    categories_queryset = Config_Partida.objects.all().values()
+    data = []
+    labels = []
+    for category in categories_queryset:
+        labels.append(category['nombre'])
+    for label in labels:
+        count = 0
+        for match in matches_queryset:
+            if match.pregunta_rel.trivia.nombre == label:
+                count += 1
+        data.append(count)
+        # data.append(matches_queryset.pregunta_rel_id.)
+    category_data = {
+        'labels': labels,
+        'data': data
+    }
+    return category_data

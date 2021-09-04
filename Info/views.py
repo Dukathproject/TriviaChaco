@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from MySQLdb import _mysql
 from Trivia.forms import RegisterForm, LoginForm, RankingForm
-from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get, own_historial_get, login_data_get
+from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get, own_historial_get, login_data_get, category_data_get
 from django.contrib.auth import logout
 from django.http import JsonResponse
 import json
@@ -95,5 +95,14 @@ def historial(request, partida_id):
 
 #DATA---------------------------------------------------------------------
 def data(request):
-    login_data = json.dumps(login_data_get())
-    return render(request, "data.html",{'login_data': login_data})
+    if request.user.is_authenticated:
+        if request.user.id == 1:
+            login_data = json.dumps(login_data_get())
+            category_data = json.dumps(category_data_get())
+            return render(request, "data.html",{'login_data': login_data, 'category_data': category_data})
+        else:
+            msg = "Debe ser administrador para acceder."
+            return render(request, "lobby.html", {'msg': msg})
+    else:
+        msg = "Debe iniciar sesión para acceder."
+        return render(request, "index.html", {'msg': msg})

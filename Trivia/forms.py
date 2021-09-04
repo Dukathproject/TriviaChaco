@@ -10,6 +10,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=32, widget=forms.PasswordInput)
     
 class RankingForm(forms.Form):
+    pregunta_rel = forms.IntegerField(label='pregunta_rel')
     result = forms.IntegerField(label='result')
     pregunta = forms.CharField(label="correcta", max_length=200)
     correcta = forms.CharField(label="correcta", max_length=200)

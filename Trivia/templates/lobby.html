@@ -16,9 +16,15 @@
             </div>    
             <div class="Bienvenida">
                 <h1>Bienvenidos a ChacoTrivia!</h1>
+                <p>{{ msg }}</p>
                 <div class="botonera">
                     <a href="{% url 'game' %}" class="boton">Jugar!</a>
                 </div>
+                {% if request.user.is_superuser %}
+                    <div class="botonera">
+                        <a href="{% url 'data' %}" class="boton">Ver estadísticas</a>
+                    </div>
+                {% endif %}
                 <div><p> Divertite a lo grande!</p></div>
             </div>    
             
