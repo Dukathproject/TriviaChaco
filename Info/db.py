@@ -139,7 +139,6 @@ def category_data_get():
             if match.pregunta_rel.trivia.nombre == label:
                 count += 1
         data.append(count)
-        # data.append(matches_queryset.pregunta_rel_id.)
     category_data = {
         'labels': labels,
         'data': data

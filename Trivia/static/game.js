@@ -1,3 +1,11 @@
+//PREVENIR PRINTS EN CONSOLA
+window.console.log = function(){
+    console.error('The developer console is temp...');
+    window.console.log = function() {
+        return false;
+    }
+}
+
 //OBTENER DATOS PARA RANKING
 var result = document.getElementById("id_result");
 var correct = document.getElementById("id_correcta");
@@ -20,6 +28,7 @@ var time = 15;
 //PUNTAJE
 var puntaje = 0;
 var nPregunta = 1;
+var answers = 3;
 
 function sigPregunta(){
     //ACTUALIZADO DE TEXTOS
@@ -35,8 +44,10 @@ function sigPregunta(){
     };
     var boton3 = document.getElementById('b3');
     if(question_parsed['question_' + nPregunta]['respuestas'][2]){
+        answers = 3
         boton3.style.display= "Block";
     }else{
+        answers = 2
         boton3.style.display= "None";
     }
     cont = 0;
@@ -44,24 +55,25 @@ function sigPregunta(){
 
 //CUENTA REGRESIVA
 setInterval(function(){
+    timer.textContent = 'Tiempo restante: ' + time;
     if (time > 0){
         time--
-        timer.textContent = 'Tiempo restante: ' + time;
     }else {
-        timer.textContent = 'Tiempo agotado. ¡FIN DE LA PARTIDA!';
+        // timer.textContent = 'Tiempo agotado. ¡FIN DE LA PARTIDA!';
         setTimeout(function(){
-            //GUARDAR VALOR TOTAL
+        //GUARDAR VALOR TOTAL
         result.value = puntaje;
         //GUARDAR VALOR PREGUNTA
         pregunta.value = questionFormula.textContent;
         
         //GUARDAR VALOR DE RESPUESTA CORRECTA
-        for(var i = 1; i <= 3; i++){
+        for(var i = 1; i <= answers; i++){
             var correct_answer = question_parsed['question_' + nPregunta]['respuestas'][i-1];
             if(correct_answer['respuesta_' + i]['correcta'] === true){
                 correct.value = correct_answer['respuesta_' + i]['formula'];
             }
         }
+
         //GUARDAR VALOR PREGUNTA_REL
         pregunta_rel.value = question_parsed['question_' + nPregunta]['id'];
 
@@ -98,7 +110,7 @@ function selección(boton) {
         //GUARDAR VALOR PREGUNTA
         pregunta.value = questionFormula.textContent;
         //GUARDAR VALOR DE RESPUESTA CORRECTA
-        for(var i = 1; i <= 3; i++){
+        for(var i = 1; i <= answers; i++){
             var correct_answer = question_parsed['question_' + nPregunta]['respuestas'][i-1];
             if(correct_answer['respuesta_' + i]['correcta'] === true){
                 correct.value = correct_answer['respuesta_' + i]['formula'];
