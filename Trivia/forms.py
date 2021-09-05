@@ -15,3 +15,6 @@ class RankingForm(forms.Form):
     pregunta = forms.CharField(label="correcta", max_length=200)
     correcta = forms.CharField(label="correcta", max_length=200)
     incorrecta = forms.CharField(label="incorrecta", max_length=200)
+    
+class AvatarForm(forms.Form):
+    avatar_url = forms.CharField(label = 'Pegá tu URL')

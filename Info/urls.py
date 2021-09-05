@@ -29,6 +29,7 @@ urlpatterns = [
     path('game/', v.game, name='game'),
     path('ranking/', v.ranking, name='ranking'),
     path('<int:partida_id>/', v.historial, name='historial'),
+    path('profile/', v.profile, name='profile'),
     path('data/', v.data, name='data')
     
     #---------------------------------------------

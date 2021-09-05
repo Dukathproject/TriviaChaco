@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+{% load static %}
+<div class="principal">
+    <div class="articulo">
+        <div class="formulario">
+            <div class="signup">
+                <h2 class="form-title" id="signup">ACTUALIZÁ TU AVATAR!</h2>
+                <div>
+                    <img class="avatarImg" src="{{ avatar }}">
+                </div>
+                <div class="form-holder">
+                    <!-- FORMULARIO REGISTRO -->
+                    <form action="/profile/" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <div class="botonera">
+                            <input class="boton" type="submit" value="Actualizar avatar">
+                        </div>
+                        <div class="botonera">
+                            <a href="{% url 'logout' %}" class="boton">Cerrar Sesión</a>
+                        </div>
+                    </form>
+                    <!--  -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <footer class="footer">
+            <nav class="pie">
+                <a href="#">Grupo 7 - Informatorio Chaco 2021</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

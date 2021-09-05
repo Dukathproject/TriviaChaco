@@ -2,8 +2,8 @@
 # from django.template import Template, Context
 from django.shortcuts import render, redirect
 from MySQLdb import _mysql
-from Trivia.forms import RegisterForm, LoginForm, RankingForm
-from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get, own_historial_get, login_data_get, category_data_get
+from Trivia.forms import RegisterForm, LoginForm, RankingForm, AvatarForm
+from .db import register_post, user_login, questions, ranking_post, ranking_get, historial_get, own_historial_get, login_data_get, category_data_get, profile_get, profile_post
 from django.contrib.auth import logout
 from django.http import JsonResponse
 import json
@@ -106,3 +106,12 @@ def data(request):
     else:
         msg = "Debe iniciar sesión para acceder."
         return render(request, "index.html", {'msg': msg})
+    
+#PROFILE-----------------------------------------------------------------------
+def profile(request):
+    if request.method == 'POST':
+        avatar = profile_post(request)
+    form = AvatarForm()
+    avatar = profile_get(request)
+    return render(request, "profile.html", {'form': form,'avatar': avatar})
+        

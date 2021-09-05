@@ -24,7 +24,6 @@ class Pregunta(models.Model):
     def get_respuestas(self):
         return self.respuestas_set.all()
     
-    
 class Respuesta(models.Model):
     formula = models.CharField(max_length=200)
     correcta = models.BooleanField(default=False)
@@ -51,3 +50,7 @@ class UserLog(models.Model):
     
     def __str__(self):
         return f"Usuario: {self.usuario}, Fecha: {self.fecha}"
+    
+class Avatar(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    avatar = models.CharField(max_length=255, default='https://lh3.googleusercontent.com/proxy/Q_GILNYDMzcbeGN-IRXSUIYD3FxiAxuw5s_r6X44FsIX7FaCvBibUkEpi_G1qs5GeJWqRUJ6CeYIF8ZUd3lmUXLJkRfc6h4WR3Y7fbkOasPZGN-qDVluy_A')

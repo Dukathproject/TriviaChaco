@@ -1,10 +1,10 @@
 from MySQLdb import _mysql
-from Trivia.forms import RegisterForm, LoginForm, RankingForm
+from Trivia.forms import RegisterForm, LoginForm, RankingForm, AvatarForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db import models
 from django.db.models import Count
-from Trivia.models import Config_Partida, Pregunta, Respuesta, Ranking, UserLog
+from Trivia.models import Config_Partida, Pregunta, Respuesta, Ranking, UserLog, Avatar
 import random
 
 
@@ -52,6 +52,8 @@ def register_post(request):
         form_data = form.cleaned_data
         try:
             User.objects.create_user(form_data['name'], form_data['email'], form_data['password'])
+            usuario = User.objects.latest('id')
+            Avatar.objects.create(usuario=usuario, avatar='https://lh3.googleusercontent.com/proxy/Q_GILNYDMzcbeGN-IRXSUIYD3FxiAxuw5s_r6X44FsIX7FaCvBibUkEpi_G1qs5GeJWqRUJ6CeYIF8ZUd3lmUXLJkRfc6h4WR3Y7fbkOasPZGN-qDVluy_A')
             msg = [True, "Usuario creado de forma exitosa!"]
             return msg
         except:
@@ -144,3 +146,16 @@ def category_data_get():
         'data': data
     }
     return category_data
+
+def profile_get(request):
+    avatar = Avatar.objects.get(usuario_id=request.user.id)
+    return avatar.avatar
+
+def profile_post(request):
+    form = AvatarForm(request.POST)
+    if form.is_valid():
+        form_data = form.cleaned_data
+        avatar = Avatar.objects.get(usuario_id=request.user.id)
+        avatar.avatar = form_data['avatar_url']
+        avatar.save()
+    return

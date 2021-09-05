@@ -55,7 +55,15 @@ iframe{
 .logo img{
     width: 20%;
 }
-                                              
+
+.avatarImg {
+    max-width: 200px;
+    max-height: 200px;
+    box-shadow: 5px 5px 0 0 black;
+    border-radius: 50%;
+    padding: 0;
+}
+
 .nav {
     flex:4 1 auto;
 }
@@ -335,13 +343,11 @@ div.avatar {
 }
 .signup{
     border-radius: 10px;
-    border: #929292 solid 1px;
     color: #f1c711;
     display: flex;
     flex-direction: column;
     width: 100%;
     text-align: center;
-    /* text-shadow: 1px 2px 2px #333333; */
     margin: auto;
     margin-bottom: 10px;
 } 
@@ -362,7 +368,6 @@ div.avatar {
     font-size: 20px;
     text-align: center;
     color: #f1c711;
-    /* text-shadow: 1px 2px 2px #333333; */
 }
 .textsalto img{
     width: 20%;
