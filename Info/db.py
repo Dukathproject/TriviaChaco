@@ -69,7 +69,6 @@ def ranking_post(request):
         pregunta_rel = Pregunta.objects.get(id = form_data['pregunta_rel'])
         result = Ranking(usuario=user, aciertos=form_data['result'], pregunta=form_data['pregunta'], correcta=form_data['correcta'], incorrecta=form_data['incorrecta'], pregunta_rel=pregunta_rel)
         result.save()
-        print(pregunta_rel)
         #CAMBIAR CODIGO POR CONSULTA AL IMPLEMENTAR EL RESULT
         part = Ranking.objects.latest('id')
         partida_id = part.id
@@ -95,6 +94,9 @@ def user_login(request):
 def ranking_get():
     #se obtiene la lista completa de partidas y se ordena por puntaje, y se filtra para solo ver una por usuario
     rank = Ranking.objects.raw('SELECT id, MAX(aciertos) as maximo, usuario_id, fecha, pregunta, correcta, incorrecta FROM trivia_ranking GROUP BY usuario_id ORDER BY maximo DESC;')
+    for each in rank:
+        avatar = Avatar.objects.get(usuario_id=each.usuario_id)
+        each.avatar = avatar.avatar  
     return rank
 
 #obtener ranking----------------------------------      
