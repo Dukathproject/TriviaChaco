@@ -54,7 +54,8 @@ iframe{
 }
 .logo img{
     width: 10%;
-    margin-left: 15%
+    margin-left: 15%;
+    padding-top: 0;
 }
 
 .avatarImg {
