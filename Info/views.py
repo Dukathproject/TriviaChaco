@@ -13,7 +13,8 @@ import json
 def index(request):
     if request.user.is_authenticated:
         historial = own_historial_get(request)
-        return render(request, "lobby.html", {'historial': historial})
+        avatar = profile_get(request)
+        return render(request, "lobby.html", {'historial': historial, 'avatar': avatar})
     else:
         return render(request, "index.html")
 
@@ -39,7 +40,8 @@ def login(request):
         user_login(request)
         if request.user.is_authenticated:
             historial = own_historial_get(request)
-            return render(request, "lobby.html", {'historial': historial})
+            avatar = profile_get(request)
+            return render(request, "lobby.html", {'historial': historial, 'avatar': avatar})
         else:
             form = LoginForm()
             return render(request, "login.html", {'form': form, 'alert': 'El usuario y/o contraseña no corresponden a alguien registrado.'})        
@@ -51,7 +53,8 @@ def login(request):
 def lobby(request):
     if request.user.is_authenticated:
         historial = own_historial_get(request)
-        return render(request, "lobby.html", {'historial': historial})
+        avatar = profile_get(request)
+        return render(request, "lobby.html", {'historial': historial, 'avatar': avatar})
     else:
         return render(request, "index.html") 
   
@@ -65,7 +68,8 @@ def game(request):
         else:
             questions_list = json.dumps(questions())
             form = RankingForm()
-            return render(request, "game.html", {'question':questions_list, 'form': form})
+            avatar = profile_get(request)
+            return render(request, "game.html", {'question':questions_list, 'form': form, 'avatar': avatar})
     else:
         form = LoginForm()
         return render(request, "login.html", {'form': form, 'alert': 'Para jugar debe iniciar sesión.'})
@@ -74,7 +78,8 @@ def game(request):
 #RANKING-------------------------------------------------------------------    
 def ranking(request):
     rank = ranking_get()
-    return render(request, "ranking.html", {'rank': rank})
+    avatar = profile_get(request)
+    return render(request, "ranking.html", {'rank': rank, 'avatar': avatar})
 
 
 #LOG OUT-------------------------------------------------------------------    
@@ -85,13 +90,16 @@ def user_logout(request):
     
 #US----------------------------------------------------------------------------
 def us(request):
-    return render(request, "us.html")
+    avatar = profile_get(request)
+    print(avatar)
+    return render(request, "us.html", {'avatar': avatar})
 
 
 #HISTORIAL---------------------------------------------------------------------
 def historial(request, partida_id):
     result = historial_get(partida_id)
-    return render(request, "result.html", {'result': result})
+    avatar = profile_get(request)
+    return render(request, "result.html", {'result': result, 'avatar': avatar})
 
 #DATA---------------------------------------------------------------------
 def data(request):
@@ -99,7 +107,8 @@ def data(request):
         if request.user.id == 1:
             login_data = json.dumps(login_data_get())
             category_data = json.dumps(category_data_get())
-            return render(request, "data.html",{'login_data': login_data, 'category_data': category_data})
+            avatar = profile_get(request)
+            return render(request, "data.html",{'login_data': login_data, 'category_data': category_data, 'avatar': avatar})
         else:
             msg = "Debe ser administrador para acceder."
             return render(request, "lobby.html", {'msg': msg})
