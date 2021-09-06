@@ -77,9 +77,13 @@ def game(request):
 
 #RANKING-------------------------------------------------------------------    
 def ranking(request):
-    rank = ranking_get()
-    avatar = profile_get(request)
-    return render(request, "ranking.html", {'rank': rank, 'avatar': avatar})
+    if request.user.is_authenticated:
+        rank = ranking_get()
+        avatar = profile_get(request)
+        return render(request, "ranking.html", {'rank': rank, 'avatar': avatar})
+    else:
+        rank = ranking_get()
+        return render(request, "ranking.html", {'rank': rank})
 
 
 #LOG OUT-------------------------------------------------------------------    
@@ -90,16 +94,21 @@ def user_logout(request):
     
 #US----------------------------------------------------------------------------
 def us(request):
-    avatar = profile_get(request)
-    print(avatar)
-    return render(request, "us.html", {'avatar': avatar})
+    if request.user.is_authenticated:
+        avatar = profile_get(request)
+        return render(request, "us.html", {'avatar': avatar})
+    else:
+        return render(request, "us.html")
 
 
 #HISTORIAL---------------------------------------------------------------------
 def historial(request, partida_id):
     result = historial_get(partida_id)
-    avatar = profile_get(request)
-    return render(request, "result.html", {'result': result, 'avatar': avatar})
+    if request.user.is_authenticated:
+        avatar = profile_get(request)
+        return render(request, "result.html", {'result': result, 'avatar': avatar})
+    else:
+        return render(request, "result.html", {'result': result})
 
 #DATA---------------------------------------------------------------------
 def data(request):
