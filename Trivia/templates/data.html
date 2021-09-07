@@ -1,14 +1,19 @@
 {% include 'header.html' %}
 {% load static %}
 <style>
-  .charts{
+  .chart1{
+    width:1000px;
+  }
+  .chart2{
     width:600px;
   }
 
   .data{
     z-index: 1000;
+    display: flex;
   }
 </style>
+
 <div class="data">
   <div id="login_data">
     {{ login_data }}
@@ -18,10 +23,10 @@
     {{ category_data }}
   </div>
 
-  <div class="charts">
+  <div class="chart1">
     <canvas id="loginChart"></canvas>
   </div>
-  <div class="charts">
+  <div class="chart2">
     <canvas id="categoryChart"></canvas>
   </div>
 </div>
@@ -96,6 +101,9 @@ var myChart = new Chart(ctx, {
         }
     }
 })
+
+document.getElementById('login_data').remove()
+document.getElementById('category_data').remove()
 
 </script>
 

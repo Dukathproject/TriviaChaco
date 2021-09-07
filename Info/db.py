@@ -53,7 +53,7 @@ def register_post(request):
         try:
             User.objects.create_user(form_data['name'], form_data['email'], form_data['password'])
             usuario = User.objects.latest('id')
-            Avatar.objects.create(usuario=usuario, avatar='https://lh3.googleusercontent.com/proxy/Q_GILNYDMzcbeGN-IRXSUIYD3FxiAxuw5s_r6X44FsIX7FaCvBibUkEpi_G1qs5GeJWqRUJ6CeYIF8ZUd3lmUXLJkRfc6h4WR3Y7fbkOasPZGN-qDVluy_A')
+            Avatar.objects.create(usuario=usuario, avatar='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScPuSSp3dmio9nEwA8FEAppD_ZzC7j7pCaDKYjiG1thpF4AyTQ-CvOonekXg3JdRl-_Kk&usqp=CAU')
             msg = [True, "Usuario creado de forma exitosa!"]
             return msg
         except:

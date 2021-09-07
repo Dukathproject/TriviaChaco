@@ -119,8 +119,9 @@ def data(request):
             avatar = profile_get(request)
             return render(request, "data.html",{'login_data': login_data, 'category_data': category_data, 'avatar': avatar})
         else:
+            avatar = profile_get(request)
             msg = "Debe ser administrador para acceder."
-            return render(request, "lobby.html", {'msg': msg})
+            return render(request, "lobby.html", {'msg': msg,'avatar': avatar})
     else:
         msg = "Debe iniciar sesión para acceder."
         return render(request, "index.html", {'msg': msg})
